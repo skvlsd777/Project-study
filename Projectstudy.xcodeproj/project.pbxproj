@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9CB4FEE52E71A3D600CB18CB /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FEE42E71A24400CB18CB /* NotificationManager.swift */; };
 		9CBDA8DB2E6AF8BC00DB4A1E /* AdviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBDA8CC2E6AF4AB00DB4A1E /* AdviceView.swift */; };
 		9CBDA8DC2E6AF8DB00DB4A1E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBDA8CD2E6AF4AB00DB4A1E /* ContentView.swift */; };
 		9CBDA8DD2E6AF8E300DB4A1E /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBDA8CE2E6AF4AB00DB4A1E /* CustomView.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		9CA139002E6C0CE3006ED853 /* Projectstudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Projectstudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CB4FEE42E71A24400CB18CB /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		9CBDA8B12E6AF4AB00DB4A1E /* Project_studyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project_studyApp.swift; sourceTree = "<group>"; };
 		9CBDA8B72E6AF4AB00DB4A1E /* AdviceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceItem.swift; sourceTree = "<group>"; };
 		9CBDA8B82E6AF4AB00DB4A1E /* CustomizationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationData.swift; sourceTree = "<group>"; };
@@ -80,6 +82,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9CB4FEE22E71A1AA00CB18CB /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				9CB4FEE42E71A24400CB18CB /* NotificationManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		9CBDA8B22E6AF4AB00DB4A1E /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +159,7 @@
 				9CBDA8B22E6AF4AB00DB4A1E /* App */,
 				9CBDA8BE2E6AF4AB00DB4A1E /* Models */,
 				9CBDA8D82E6AF4AB00DB4A1E /* Views */,
+				9CB4FEE22E71A1AA00CB18CB /* Managers */,
 				9CBDA8CB2E6AF4AB00DB4A1E /* ViewModels */,
 				9CBDA8C32E6AF4AB00DB4A1E /* Resources */,
 				9CA139002E6C0CE3006ED853 /* Projectstudy.app */,
@@ -242,6 +253,7 @@
 				9CBDA8EB2E6AF93500DB4A1E /* Settings.swift in Sources */,
 				9CBDA8EC2E6AF93500DB4A1E /* Design.swift in Sources */,
 				9CBDA8ED2E6AF93500DB4A1E /* AdviceItem.swift in Sources */,
+				9CB4FEE52E71A3D600CB18CB /* NotificationManager.swift in Sources */,
 				9CBDA8EF2E6AF94E00DB4A1E /* AdviceViewModel.swift in Sources */,
 				9CBDA8F02E6AF94E00DB4A1E /* ProfileViewModel.swift in Sources */,
 				9CBDA8F12E6AF94E00DB4A1E /* DesignViewModel.swift in Sources */,

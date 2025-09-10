@@ -22,15 +22,29 @@ struct SettingsView: View {
                 }
                 .padding()
                 
-                // Toggle для уведомлений
                 Toggle(isOn: $viewModel.settings.notificationsEnabled) {
                     Text("Уведомления")
                         .foregroundColor(themeViewModel.currentTheme == .dark ? .white : .black)
                 }
                 .padding()
-                .onChange(of: viewModel.settings.notificationsEnabled) { _ in
+                .onChange(of: viewModel.settings.notificationsEnabled) { isOn in
                     viewModel.toggleNotifications()
+                    UserDefaults.standard.set(isOn, forKey: "notificationsEnabled")
+
+                    if isOn {
+                        NotificationManager.requestAuthorizationIfNeeded { granted in
+                            if granted {
+                                Task { try? await NotificationManager.scheduleDaily(at: 9, minute: 0) }
+                            } else {
+                                NotificationManager.openAppSettings()
+                            }
+                        }
+                    } else {
+                        NotificationManager.cancelDaily()
+                    }
                 }
+
+
 
                 // Picker для модели Apple Watch
                 Picker("Выберите модель Apple Watch", selection: $viewModel.settings.selectedDevice) {
