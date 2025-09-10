@@ -67,3 +67,27 @@ enum NotificationManager {
         UIApplication.shared.open(url)
     }
 }
+// ... здесь твой текущий NotificationManager { ... }
+
+#if DEBUG
+extension NotificationManager {
+    /// Разовое тест-уведомление через N секунд
+    static func scheduleTest(after seconds: Int = 10) {
+        requestAuthorizationIfNeeded { granted in
+            guard granted else { return }
+
+            UNUserNotificationCenter.current()
+                .removePendingNotificationRequests(withIdentifiers: ["test_watch_face"])
+
+            let content = UNMutableNotificationContent()
+            content.title = "Тест"
+            content.body  = "Это тест: баннер через \(seconds) сек."
+            content.sound = .default
+
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(seconds), repeats: false)
+            let req = UNNotificationRequest(identifier: "test_watch_face", content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(req, withCompletionHandler: nil)
+        }
+    }
+}
+#endif

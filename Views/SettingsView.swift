@@ -43,7 +43,12 @@ struct SettingsView: View {
                         NotificationManager.cancelDaily()
                     }
                 }
-
+#if DEBUG
+Button("Тест уведомления (10 сек)") {
+    NotificationManager.scheduleTest(after: 10)
+}
+.padding(.top, 8)
+#endif
 
 
                 // Picker для модели Apple Watch
