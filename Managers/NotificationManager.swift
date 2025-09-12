@@ -4,7 +4,14 @@ import UIKit
 enum NotificationManager {
     static let dailyId = "daily_watch_face_reminder"
 
-    /// Разрешение на уведомления (просим один раз)
+    // Текущий системный статус разрешений
+    static func authorizationStatus(completion: @escaping (UNAuthorizationStatus) -> Void) {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            completion(settings.authorizationStatus)
+        }
+    }
+
+    // Просим разрешение при необходимости (повторно не тревожим)
     static func requestAuthorizationIfNeeded(completion: @escaping (Bool) -> Void) {
         let center = UNUserNotificationCenter.current()
         center.getNotificationSettings { settings in
@@ -23,11 +30,10 @@ enum NotificationManager {
         }
     }
 
-    /// Запланировать ежедневное уведомление на 09:00
+    // Планируем ежедневное уведомление на 09:00 (локальное время)
     static func scheduleDaily(at hour: Int = 9, minute: Int = 0) async throws {
-        // уберём дубликаты
-        UNUserNotificationCenter.current()
-            .removePendingNotificationRequests(withIdentifiers: [dailyId])
+        let center = UNUserNotificationCenter.current()
+        center.removePendingNotificationRequests(withIdentifiers: [dailyId])
 
         let content = UNMutableNotificationContent()
         content.title = "Напоминание"
@@ -39,17 +45,17 @@ enum NotificationManager {
         comps.minute = minute
 
         let trigger = UNCalendarNotificationTrigger(dateMatching: comps, repeats: true)
-        let request = UNNotificationRequest(identifier: dailyId, content: content, trigger: trigger)
-        try await UNUserNotificationCenter.current().add(request)
+        let req = UNNotificationRequest(identifier: dailyId, content: content, trigger: trigger)
+        try await center.add(req)
     }
 
-    /// Отменить ежедневное уведомление
+    // Отменяем ежедневное уведомление
     static func cancelDaily() {
         UNUserNotificationCenter.current()
             .removePendingNotificationRequests(withIdentifiers: [dailyId])
     }
 
-    /// Синхронизировать состояние при старте приложения
+    // Синхронизация при старте приложения/возврате из настроек
     static func sync(enabled: Bool, hour: Int = 9, minute: Int = 0) {
         if enabled {
             requestAuthorizationIfNeeded { granted in
@@ -61,23 +67,21 @@ enum NotificationManager {
         }
     }
 
-    /// Открыть системные настройки приложения (если юзер запретил уведомления)
+    // Открыть системные настройки приложения (если доступ запрещён)
     static func openAppSettings() {
         guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
         UIApplication.shared.open(url)
     }
 }
-// ... здесь твой текущий NotificationManager { ... }
 
 #if DEBUG
 extension NotificationManager {
-    /// Разовое тест-уведомление через N секунд
     static func scheduleTest(after seconds: Int = 10) {
         requestAuthorizationIfNeeded { granted in
             guard granted else { return }
 
-            UNUserNotificationCenter.current()
-                .removePendingNotificationRequests(withIdentifiers: ["test_watch_face"])
+            let center = UNUserNotificationCenter.current()
+            center.removePendingNotificationRequests(withIdentifiers: ["test_watch_face"])
 
             let content = UNMutableNotificationContent()
             content.title = "Тест"
@@ -86,8 +90,9 @@ extension NotificationManager {
 
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(seconds), repeats: false)
             let req = UNNotificationRequest(identifier: "test_watch_face", content: content, trigger: trigger)
-            UNUserNotificationCenter.current().add(req, withCompletionHandler: nil)
+            center.add(req, withCompletionHandler: nil)
         }
     }
 }
 #endif
+
