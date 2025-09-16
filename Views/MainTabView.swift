@@ -3,64 +3,132 @@ import SwiftUI
 struct MainTabView: View {
     @Binding var isLoggedIn: Bool
     @EnvironmentObject var themeViewModel: ThemeViewModel
-
-    // По одному стеку на таб
-    @State private var designsPath = NavigationPath()
-    @State private var advicePath  = NavigationPath()
-    @State private var settingsPath = NavigationPath()
-    @State private var profilePath = NavigationPath()
+    @EnvironmentObject var router: Router
 
     var body: some View {
-        TabView {
-            NavigationStack(path: $designsPath) {
+        TabView(selection: $router.selectedTab) {
+
+            // ДИЗАЙНЫ
+            NavigationStack(path: router.pathBinding(for: .designs)) {
                 DesignsListView()
-                    .environmentObject(themeViewModel)
                     .navigationTitle("Стили дизайна")
-                    .navigationDestination(for: Design.self) { design in
-                        DesignDetailView(design: design,
-                                         viewModel: DesignViewModel()) // или пробрось VM
-                            .environmentObject(themeViewModel)
+                    .navigationDestination(for: Route.self) { route in
+                        switch route {
+                        case .designDetail(let design):
+                            DesignDetailView(design: design)
+                                .environmentObject(themeViewModel)
+
+                        case .wallpaperDetail(let w):
+                            // Инлайн «деталь обоев» (без отдельного файла)
+                            ScrollView {
+                                VStack(spacing: 16) {
+                                    Image(w.imageName)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .cornerRadius(16)
+                                    Text(w.name)
+                                        .font(.title2).bold()
+                                }
+                                .padding()
+                            }
+                            .navigationTitle(w.name)
+                            .navigationBarTitleDisplayMode(.inline)
+
+                        case .adviceDetail(let item):
+                            DetailAdviceView(adviceItem: item)
+
+                        case .settingsRoot:
+                            SettingsView().environmentObject(themeViewModel)
+
+                        case .profileRoot:
+                            ProfileView(isLoggedIn: $isLoggedIn).environmentObject(themeViewModel)
+                        }
                     }
             }
             .tabItem { Label("Дизайны", systemImage: "paintbrush.fill") }
+            .tag(AppTab.designs)
 
-            // Вкладка "Советы"
-            NavigationStack(path: $advicePath) {
+            // СОВЕТЫ
+            NavigationStack(path: router.pathBinding(for: .advice)) {
                 AdviceView()
-                    .environmentObject(themeViewModel)
                     .navigationTitle("Советы")
-                    .navigationDestination(for: AdviceItem.self) { item in
-                        DetailAdviceView(adviceItem: item)
-                            .environmentObject(themeViewModel)
+                    .navigationDestination(for: Route.self) { route in
+                        switch route {
+                        case .adviceDetail(let item):
+                            DetailAdviceView(adviceItem: item)
+                        case .designDetail(let design):
+                            DesignDetailView(design: design).environmentObject(themeViewModel)
+                        case .settingsRoot:
+                            SettingsView().environmentObject(themeViewModel)
+                        case .profileRoot:
+                            ProfileView(isLoggedIn: $isLoggedIn).environmentObject(themeViewModel)
+                        case .wallpaperDetail:
+                            EmptyView()
+                        }
                     }
             }
             .tabItem { Label("Советы", systemImage: "lightbulb.fill") }
+            .tag(AppTab.advice)
 
-            // Вкладка "Настройки"
-            NavigationStack(path: $settingsPath) {
+            // НАСТРОЙКИ
+            NavigationStack(path: router.pathBinding(for: .settings)) {
                 SettingsView()
-                    .environmentObject(themeViewModel)
                     .navigationTitle("Настройки")
+                    .navigationDestination(for: Route.self) { route in
+                        switch route {
+                        case .designDetail(let design):
+                            DesignDetailView(design: design).environmentObject(themeViewModel)
+                        case .adviceDetail(let item):
+                            DetailAdviceView(adviceItem: item)
+                        case .profileRoot:
+                            ProfileView(isLoggedIn: $isLoggedIn).environmentObject(themeViewModel)
+                        case .settingsRoot, .wallpaperDetail:
+                            EmptyView()
+                        }
+                    }
             }
             .tabItem { Label("Настройки", systemImage: "gearshape.fill") }
+            .tag(AppTab.settings)
 
-            // Вкладка "Профиль"
-            NavigationStack(path: $profilePath) {
+            // ПРОФИЛЬ
+            NavigationStack(path: router.pathBinding(for: .profile)) {
                 ProfileView(isLoggedIn: $isLoggedIn)
                     .environmentObject(themeViewModel)
                     .navigationTitle("Профиль")
+                    .navigationDestination(for: Route.self) { route in
+                        switch route {
+                        case .designDetail(let design):
+                            DesignDetailView(design: design).environmentObject(themeViewModel)
+                        case .adviceDetail(let item):
+                            DetailAdviceView(adviceItem: item)
+                        case .settingsRoot:
+                            SettingsView().environmentObject(themeViewModel)
+                        case .profileRoot, .wallpaperDetail:
+                            EmptyView()
+                        }
+                    }
             }
             .tabItem { Label("Профиль", systemImage: "person.fill") }
+            .tag(AppTab.profile)
         }
         .preferredColorScheme(themeViewModel.currentTheme)
     }
 }
 
-
 struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView(isLoggedIn: .constant(true))
-            .environmentObject(ThemeViewModel())
+        PreviewMainTab()
     }
 }
 
+private struct PreviewMainTab: View {
+    @State private var isLoggedIn = true
+    @StateObject private var themeVM = ThemeViewModel()
+    @StateObject private var router  = Router()
+
+    var body: some View {
+        MainTabView(isLoggedIn: $isLoggedIn)
+            .environmentObject(themeVM)
+            .environmentObject(router)
+    }
+}
