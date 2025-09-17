@@ -5,7 +5,7 @@ import UserNotifications
 struct Project_studyApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var themeVM = ThemeViewModel()
-    @StateObject var router  = Router()
+    @StateObject var router  = RootRouter()
 
     var body: some Scene {
         WindowGroup {
