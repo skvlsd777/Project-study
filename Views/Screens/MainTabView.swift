@@ -5,6 +5,7 @@ struct MainTabView: View {
     @EnvironmentObject var themeViewModel: ThemeViewModel
     @EnvironmentObject var router: RootRouter
 
+
     var body: some View {
         TabView(selection: $router.selectedTab) {
 
@@ -34,11 +35,12 @@ struct MainTabView: View {
 
             // ПРОФИЛЬ
             TabNavStack(tab: .profile, isLoggedIn: $isLoggedIn) {
-                ProfileView(isLoggedIn: $isLoggedIn)
+                ProfileTabContainer(isLoggedIn: $isLoggedIn)
                     .navigationTitle("Профиль")
             }
             .tabItem { Label("Профиль", systemImage: "person.fill") }
             .tag(AppTab.profile)
+
         }
         .preferredColorScheme(themeViewModel.currentTheme)
     }

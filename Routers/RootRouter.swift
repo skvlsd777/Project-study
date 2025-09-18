@@ -11,6 +11,7 @@ enum Route: Hashable {
     case adviceDetail(AdviceItem)
     case settingsRoot
     case profileRoot
+    case profileEdit
 }
 
 // MARK: - Root Router
@@ -38,9 +39,6 @@ final class RootRouter: ObservableObject {
         let kp = keyPath(for: tab)
         return Binding(get: { self[keyPath: kp] }, set: { self[keyPath: kp] = $0 })
     }
-
-    /// Совместимость со старым кодом (если где-то ещё используешь)
-    func pathBinding(for tab: AppTab) -> Binding<NavigationPath> { binding(for: tab) }
 
     // MARK: - Навигация
     func push(_ route: Route, on tab: AppTab? = nil) {

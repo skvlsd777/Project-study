@@ -37,6 +37,8 @@ extension View {
             case .profileRoot:
                 ProfileView(isLoggedIn: isLoggedIn)
                     .environmentObject(themeVM)
+            case .profileEdit:
+                    EmptyView()
             }
         }
     }

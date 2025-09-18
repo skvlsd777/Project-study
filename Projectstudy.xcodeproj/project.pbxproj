@@ -12,6 +12,14 @@
 		9CB4FEF42E79CA3100CB18CB /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FEF32E79CA2200CB18CB /* RootRouter.swift */; };
 		9CB4FEFE2E7A6AE500CB18CB /* NavigationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FEFD2E7A6ADF00CB18CB /* NavigationMap.swift */; };
 		9CB4FF002E7A6C8B00CB18CB /* TabNavStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FEFF2E7A6C8900CB18CB /* TabNavStack.swift */; };
+		9CB4FF032E7AAF0900CB18CB /* AppStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FF022E7AAF0400CB18CB /* AppStorageKeys.swift */; };
+		9CB4FF0A2E7AB43500CB18CB /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FF082E7AAFA200CB18CB /* AuthService.swift */; };
+		9CB4FF0B2E7AB43C00CB18CB /* LocalAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FF092E7AB29500CB18CB /* LocalAuthService.swift */; };
+		9CB4FF0D2E7C278700CB18CB /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FF0C2E7C278100CB18CB /* RegistrationView.swift */; };
+		9CB4FF0F2E7C553800CB18CB /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FF0E2E7C553000CB18CB /* ProfileStore.swift */; };
+		9CB4FF122E7C5B9500CB18CB /* AccountProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FF112E7C5B8800CB18CB /* AccountProfile.swift */; };
+		9CB4FF142E7C5CC700CB18CB /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FF132E7C5CA600CB18CB /* RegistrationViewModel.swift */; };
+		9CB4FF162E7C663C00CB18CB /* ProfileTabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FF152E7C661400CB18CB /* ProfileTabContainer.swift */; };
 		9CBDA8DB2E6AF8BC00DB4A1E /* AdviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBDA8CC2E6AF4AB00DB4A1E /* AdviceView.swift */; };
 		9CBDA8DC2E6AF8DB00DB4A1E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBDA8CD2E6AF4AB00DB4A1E /* ContentView.swift */; };
 		9CBDA8DD2E6AF8E300DB4A1E /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBDA8CE2E6AF4AB00DB4A1E /* CustomView.swift */; };
@@ -49,6 +57,14 @@
 		9CB4FEF32E79CA2200CB18CB /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
 		9CB4FEFD2E7A6ADF00CB18CB /* NavigationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMap.swift; sourceTree = "<group>"; };
 		9CB4FEFF2E7A6C8900CB18CB /* TabNavStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabNavStack.swift; sourceTree = "<group>"; };
+		9CB4FF022E7AAF0400CB18CB /* AppStorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageKeys.swift; sourceTree = "<group>"; };
+		9CB4FF082E7AAFA200CB18CB /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		9CB4FF092E7AB29500CB18CB /* LocalAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthService.swift; sourceTree = "<group>"; };
+		9CB4FF0C2E7C278100CB18CB /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		9CB4FF0E2E7C553000CB18CB /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
+		9CB4FF112E7C5B8800CB18CB /* AccountProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountProfile.swift; sourceTree = "<group>"; };
+		9CB4FF132E7C5CA600CB18CB /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		9CB4FF152E7C661400CB18CB /* ProfileTabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabContainer.swift; sourceTree = "<group>"; };
 		9CBDA8B12E6AF4AB00DB4A1E /* Project_studyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project_studyApp.swift; sourceTree = "<group>"; };
 		9CBDA8B72E6AF4AB00DB4A1E /* AdviceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceItem.swift; sourceTree = "<group>"; };
 		9CBDA8B82E6AF4AB00DB4A1E /* CustomizationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationData.swift; sourceTree = "<group>"; };
@@ -109,6 +125,7 @@
 		9CB4FEF52E7A683C00CB18CB /* Routing */ = {
 			isa = PBXGroup;
 			children = (
+				9CB4FF152E7C661400CB18CB /* ProfileTabContainer.swift */,
 				9CB4FEFF2E7A6C8900CB18CB /* TabNavStack.swift */,
 				9CB4FEFD2E7A6ADF00CB18CB /* NavigationMap.swift */,
 			);
@@ -119,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				9CBDA8CD2E6AF4AB00DB4A1E /* ContentView.swift */,
+				9CB4FF0C2E7C278100CB18CB /* RegistrationView.swift */,
 				9CBDA8D32E6AF4AB00DB4A1E /* MainTabView.swift */,
 				9CBDA8D02E6AF4AB00DB4A1E /* DesignsListView.swift */,
 				9CBDA8CC2E6AF4AB00DB4A1E /* AdviceView.swift */,
@@ -133,11 +151,39 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
+		9CB4FF042E7AAF4400CB18CB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9CB4FF102E7C5B7500CB18CB /* Profile */,
+				9CB4FF072E7AAF9100CB18CB /* Auth */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		9CB4FF072E7AAF9100CB18CB /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				9CB4FF092E7AB29500CB18CB /* LocalAuthService.swift */,
+				9CB4FF082E7AAFA200CB18CB /* AuthService.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		9CB4FF102E7C5B7500CB18CB /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				9CB4FF112E7C5B8800CB18CB /* AccountProfile.swift */,
+				9CB4FF0E2E7C553000CB18CB /* ProfileStore.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		9CBDA8B22E6AF4AB00DB4A1E /* App */ = {
 			isa = PBXGroup;
 			children = (
 				9CBDA8B12E6AF4AB00DB4A1E /* Project_studyApp.swift */,
 				9CB4FEEC2E7419BE00CB18CB /* AppDelegate.swift */,
+				9CB4FF022E7AAF0400CB18CB /* AppStorageKeys.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -168,9 +214,10 @@
 		9CBDA8CB2E6AF4AB00DB4A1E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				9CBDA8C42E6AF4AB00DB4A1E /* AdviceViewModel.swift */,
+				9CB4FF132E7C5CA600CB18CB /* RegistrationViewModel.swift */,
 				9CBDA8C52E6AF4AB00DB4A1E /* AuthViewModel.swift */,
 				9CBDA8C62E6AF4AB00DB4A1E /* CustomViewModel.swift */,
+				9CBDA8C42E6AF4AB00DB4A1E /* AdviceViewModel.swift */,
 				9CBDA8C72E6AF4AB00DB4A1E /* DesignViewModel.swift */,
 				9CBDA8C82E6AF4AB00DB4A1E /* ProfileViewModel.swift */,
 				9CBDA8C92E6AF4AB00DB4A1E /* SettingsViewModel.swift */,
@@ -192,11 +239,12 @@
 			isa = PBXGroup;
 			children = (
 				9CBDA8B22E6AF4AB00DB4A1E /* App */,
+				9CBDA8CB2E6AF4AB00DB4A1E /* ViewModels */,
 				9CBDA8BE2E6AF4AB00DB4A1E /* Models */,
 				9CBDA8D82E6AF4AB00DB4A1E /* Views */,
 				9CB4FEE22E71A1AA00CB18CB /* Managers */,
+				9CB4FF042E7AAF4400CB18CB /* Services */,
 				9CB4FEF02E79252300CB18CB /* Routers */,
-				9CBDA8CB2E6AF4AB00DB4A1E /* ViewModels */,
 				9CBDA8C32E6AF4AB00DB4A1E /* Resources */,
 				9CA139002E6C0CE3006ED853 /* Projectstudy.app */,
 			);
@@ -274,15 +322,19 @@
 				9CBDA8DD2E6AF8E300DB4A1E /* CustomView.swift in Sources */,
 				9CBDA8DF2E6AF8F100DB4A1E /* DesignsListView.swift in Sources */,
 				9CBDA8E42E6AF91000DB4A1E /* ProfileEditView.swift in Sources */,
+				9CB4FF0D2E7C278700CB18CB /* RegistrationView.swift in Sources */,
 				9CBDA8E32E6AF90A00DB4A1E /* PhotoPicker.swift in Sources */,
 				9CB4FEED2E7419BE00CB18CB /* AppDelegate.swift in Sources */,
 				9CBDA8DE2E6AF8EA00DB4A1E /* DesignDetailView.swift in Sources */,
 				9CBDA8E22E6AF90200DB4A1E /* MainTabView.swift in Sources */,
 				9CBDA8E12E6AF8FD00DB4A1E /* DetailAdviceView.swift in Sources */,
 				9CB4FEFE2E7A6AE500CB18CB /* NavigationMap.swift in Sources */,
+				9CB4FF0F2E7C553800CB18CB /* ProfileStore.swift in Sources */,
 				9CBDA8E72E6AF91F00DB4A1E /* Project_studyApp.swift in Sources */,
 				9CBDA8E02E6AF8F700DB4A1E /* DesignsRoute.swift in Sources */,
+				9CB4FF032E7AAF0900CB18CB /* AppStorageKeys.swift in Sources */,
 				9CBDA8DC2E6AF8DB00DB4A1E /* ContentView.swift in Sources */,
+				9CB4FF162E7C663C00CB18CB /* ProfileTabContainer.swift in Sources */,
 				9CBDA8E62E6AF91A00DB4A1E /* SettingsView.swift in Sources */,
 				9CBDA8E52E6AF91500DB4A1E /* ProfileView.swift in Sources */,
 				9CBDA8E82E6AF93500DB4A1E /* UserProfile.swift in Sources */,
@@ -290,6 +342,7 @@
 				9CBDA8EA2E6AF93500DB4A1E /* Wallpaper.swift in Sources */,
 				9CBDA8EB2E6AF93500DB4A1E /* Settings.swift in Sources */,
 				9CBDA8EC2E6AF93500DB4A1E /* Design.swift in Sources */,
+				9CB4FF142E7C5CC700CB18CB /* RegistrationViewModel.swift in Sources */,
 				9CBDA8ED2E6AF93500DB4A1E /* AdviceItem.swift in Sources */,
 				9CB4FEE52E71A3D600CB18CB /* NotificationManager.swift in Sources */,
 				9CBDA8EF2E6AF94E00DB4A1E /* AdviceViewModel.swift in Sources */,
@@ -301,6 +354,9 @@
 				9CBDA8F52E6AF94E00DB4A1E /* SettingsViewModel.swift in Sources */,
 				9CBDA8EE2E6AF93500DB4A1E /* CustomizationData.swift in Sources */,
 				9CB4FEF42E79CA3100CB18CB /* RootRouter.swift in Sources */,
+				9CB4FF122E7C5B9500CB18CB /* AccountProfile.swift in Sources */,
+				9CB4FF0A2E7AB43500CB18CB /* AuthService.swift in Sources */,
+				9CB4FF0B2E7AB43C00CB18CB /* LocalAuthService.swift in Sources */,
 				9CB4FF002E7A6C8B00CB18CB /* TabNavStack.swift in Sources */,
 				9CBDA8DB2E6AF8BC00DB4A1E /* AdviceView.swift in Sources */,
 			);
@@ -437,6 +493,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Gorilla Wallpaper";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -465,6 +522,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Gorilla Wallpaper";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

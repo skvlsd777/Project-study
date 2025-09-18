@@ -1,68 +1,111 @@
 import SwiftUI
 
 struct ProfileEditView: View {
-    @ObservedObject var viewModel: ProfileViewModel
     @EnvironmentObject var themeViewModel: ThemeViewModel
+    @EnvironmentObject var profileVM: ProfileViewModel
+    @Environment(\.dismiss) private var dismiss
 
-    @State private var username: String
-    @State private var email: String
-    @State private var city: String
+    @State private var usernameDraft: String = ""
+    @State private var emailDraft: String = ""
+    @State private var firstNameDraft: String = ""
+    @State private var lastNameDraft: String = ""
+    @State private var cityDraft: String = ""
 
-    init(viewModel: ProfileViewModel) {
-        self.viewModel = viewModel
-        _username = State(initialValue: viewModel.userProfile.username)
-        _email = State(initialValue: viewModel.userProfile.email)
-        _city = State(initialValue: viewModel.userProfile.city)
-    }
+    @State private var isBusy = false
+    @State private var error: String?
+    @State private var info: String?
 
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Редактирование профиля")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding()
-
-            TextField("Имя", text: $username)
-                .padding()
-                .background(themeViewModel.currentTheme == .dark ? Color.gray.opacity(0.5) : Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 5)
-            
-            TextField("Email", text: $email)
-                .padding()
-                .background(themeViewModel.currentTheme == .dark ? Color.gray.opacity(0.5) : Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 5)
-            
-            TextField("Город", text: $city)
-                .padding()
-                .background(themeViewModel.currentTheme == .dark ? Color.gray.opacity(0.5) : Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 5)
-            
-            Button(action: {
-                viewModel.updateProfile(name: username, email: email, city: city)
-            }) {
-                Text("Сохранить")
-                    .font(.title3)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(LinearGradient(gradient: Gradient(colors: [.blue, .purple]), startPoint: .topLeading, endPoint: .bottomTrailing))
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
+        Form {
+            Section(header: Text("Аккаунт")) {
+                TextField("Логин", text: $usernameDraft)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+                TextField("Email", text: $emailDraft)
+                    .keyboardType(.emailAddress)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
             }
-            .padding(.top, 20)
-            
-            Spacer()
+
+            Section(header: Text("Профиль")) {
+                TextField("Имя", text: $firstNameDraft)
+                TextField("Фамилия", text: $lastNameDraft)
+                TextField("Город", text: $cityDraft)
+            }
+
+            if let e = error { Section { Text(e).foregroundColor(.red) } }
+            if let i = info  { Section { Text(i).foregroundColor(.green) } }
+
+            Section {
+                Button {
+                    saveTapped()
+                } label: {
+                    Text(isBusy ? "Сохранение..." : "Сохранить изменения")
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+                .disabled(isBusy || !canSave)
+            }
         }
-        .padding()
-        .background(themeViewModel.currentTheme == .dark ? Color.black : Color.white)
+        .navigationTitle("Редактирование")
+        .onAppear { loadDrafts() }
+        .preferredColorScheme(themeViewModel.currentTheme)
+    }
+
+    private var canSave: Bool {
+        !usernameDraft.trimmingCharacters(in: .whitespaces).isEmpty &&
+        emailDraft.contains("@")
+    }
+
+    private func loadDrafts() {
+        usernameDraft  = profileVM.username
+        emailDraft     = profileVM.email
+        firstNameDraft = profileVM.firstName
+        lastNameDraft  = profileVM.lastName
+        cityDraft      = profileVM.city
+        error = nil; info = nil
+    }
+
+    private func saveTapped() {
+        error = nil; info = nil; isBusy = true
+
+        // Изменение логина добавим следующим шагом (нужны методы в AuthService)
+        if usernameDraft != profileVM.username {
+            error = "Изменение логина добавим на следующем шаге"
+            isBusy = false
+            return
+        }
+
+        profileVM.saveProfile(
+            email: emailDraft,
+            firstName: firstNameDraft,
+            lastName: lastNameDraft,
+            city: cityDraft
+        )
+
+        isBusy = false
+        info = "Сохранено"
+        // dismiss() — по желанию сразу закрывать экран
     }
 }
 
 struct ProfileEditView_Previews: PreviewProvider {
+    // подготовим VM с данными для превью
+    static var vm: ProfileViewModel = {
+        let vm = ProfileViewModel()
+        vm.username = "gorilla"
+        vm.email = "gorilla@wallpaper.app"
+        vm.firstName = "Gor"
+        vm.lastName  = "Rilla"
+        vm.city      = "Moscow"
+        return vm
+    }()
+
     static var previews: some View {
-        ProfileEditView(viewModel: ProfileViewModel())
-            .environmentObject(ThemeViewModel())
+        NavigationStack {
+            ProfileEditView()
+                .environmentObject(ThemeViewModel())
+                .environmentObject(vm)            // ← вместо init(viewModel:)
+        }
     }
 }
+
