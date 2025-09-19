@@ -12,7 +12,6 @@ struct TabNavStack<Content: View>: View {
     var body: some View {
         NavigationStack(path: router.binding(for: tab)) {
             content()
-                .appDestinations(isLoggedIn: $isLoggedIn, themeVM: themeVM)
         }
     }
 }

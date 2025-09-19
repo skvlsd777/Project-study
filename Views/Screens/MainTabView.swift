@@ -11,16 +11,14 @@ struct MainTabView: View {
 
             // ДИЗАЙНЫ
             TabNavStack(tab: .designs, isLoggedIn: $isLoggedIn) {
-                DesignsListView()
-                    .navigationTitle("Стили дизайна")
+                DesignsTabContainer()              // ← вместо прямого DesignsListView
             }
             .tabItem { Label("Дизайны", systemImage: "paintbrush.fill") }
             .tag(AppTab.designs)
 
             // СОВЕТЫ
             TabNavStack(tab: .advice, isLoggedIn: $isLoggedIn) {
-                AdviceView()
-                    .navigationTitle("Советы")
+                AdviceTabContainer()               // ← вместо прямого AdviceView
             }
             .tabItem { Label("Советы", systemImage: "lightbulb.fill") }
             .tag(AppTab.advice)

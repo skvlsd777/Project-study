@@ -10,7 +10,6 @@
 		9CB4FEE52E71A3D600CB18CB /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FEE42E71A24400CB18CB /* NotificationManager.swift */; };
 		9CB4FEED2E7419BE00CB18CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FEEC2E7419BE00CB18CB /* AppDelegate.swift */; };
 		9CB4FEF42E79CA3100CB18CB /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FEF32E79CA2200CB18CB /* RootRouter.swift */; };
-		9CB4FEFE2E7A6AE500CB18CB /* NavigationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FEFD2E7A6ADF00CB18CB /* NavigationMap.swift */; };
 		9CB4FF002E7A6C8B00CB18CB /* TabNavStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FEFF2E7A6C8900CB18CB /* TabNavStack.swift */; };
 		9CB4FF032E7AAF0900CB18CB /* AppStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FF022E7AAF0400CB18CB /* AppStorageKeys.swift */; };
 		9CB4FF0A2E7AB43500CB18CB /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FF082E7AAFA200CB18CB /* AuthService.swift */; };
@@ -20,6 +19,8 @@
 		9CB4FF122E7C5B9500CB18CB /* AccountProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FF112E7C5B8800CB18CB /* AccountProfile.swift */; };
 		9CB4FF142E7C5CC700CB18CB /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FF132E7C5CA600CB18CB /* RegistrationViewModel.swift */; };
 		9CB4FF162E7C663C00CB18CB /* ProfileTabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FF152E7C661400CB18CB /* ProfileTabContainer.swift */; };
+		9CB4FF182E7D1FDE00CB18CB /* DesignsTabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FF172E7D1FDA00CB18CB /* DesignsTabContainer.swift */; };
+		9CB4FF1A2E7D202700CB18CB /* AdviceTabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FF192E7D202400CB18CB /* AdviceTabContainer.swift */; };
 		9CBDA8DB2E6AF8BC00DB4A1E /* AdviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBDA8CC2E6AF4AB00DB4A1E /* AdviceView.swift */; };
 		9CBDA8DC2E6AF8DB00DB4A1E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBDA8CD2E6AF4AB00DB4A1E /* ContentView.swift */; };
 		9CBDA8DD2E6AF8E300DB4A1E /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBDA8CE2E6AF4AB00DB4A1E /* CustomView.swift */; };
@@ -55,7 +56,6 @@
 		9CB4FEE42E71A24400CB18CB /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		9CB4FEEC2E7419BE00CB18CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CB4FEF32E79CA2200CB18CB /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
-		9CB4FEFD2E7A6ADF00CB18CB /* NavigationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMap.swift; sourceTree = "<group>"; };
 		9CB4FEFF2E7A6C8900CB18CB /* TabNavStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabNavStack.swift; sourceTree = "<group>"; };
 		9CB4FF022E7AAF0400CB18CB /* AppStorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageKeys.swift; sourceTree = "<group>"; };
 		9CB4FF082E7AAFA200CB18CB /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -65,6 +65,8 @@
 		9CB4FF112E7C5B8800CB18CB /* AccountProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountProfile.swift; sourceTree = "<group>"; };
 		9CB4FF132E7C5CA600CB18CB /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		9CB4FF152E7C661400CB18CB /* ProfileTabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabContainer.swift; sourceTree = "<group>"; };
+		9CB4FF172E7D1FDA00CB18CB /* DesignsTabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignsTabContainer.swift; sourceTree = "<group>"; };
+		9CB4FF192E7D202400CB18CB /* AdviceTabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceTabContainer.swift; sourceTree = "<group>"; };
 		9CBDA8B12E6AF4AB00DB4A1E /* Project_studyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project_studyApp.swift; sourceTree = "<group>"; };
 		9CBDA8B72E6AF4AB00DB4A1E /* AdviceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceItem.swift; sourceTree = "<group>"; };
 		9CBDA8B82E6AF4AB00DB4A1E /* CustomizationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationData.swift; sourceTree = "<group>"; };
@@ -125,9 +127,10 @@
 		9CB4FEF52E7A683C00CB18CB /* Routing */ = {
 			isa = PBXGroup;
 			children = (
-				9CB4FF152E7C661400CB18CB /* ProfileTabContainer.swift */,
 				9CB4FEFF2E7A6C8900CB18CB /* TabNavStack.swift */,
-				9CB4FEFD2E7A6ADF00CB18CB /* NavigationMap.swift */,
+				9CB4FF172E7D1FDA00CB18CB /* DesignsTabContainer.swift */,
+				9CB4FF152E7C661400CB18CB /* ProfileTabContainer.swift */,
+				9CB4FF192E7D202400CB18CB /* AdviceTabContainer.swift */,
 			);
 			path = Routing;
 			sourceTree = "<group>";
@@ -322,13 +325,13 @@
 				9CBDA8DD2E6AF8E300DB4A1E /* CustomView.swift in Sources */,
 				9CBDA8DF2E6AF8F100DB4A1E /* DesignsListView.swift in Sources */,
 				9CBDA8E42E6AF91000DB4A1E /* ProfileEditView.swift in Sources */,
+				9CB4FF182E7D1FDE00CB18CB /* DesignsTabContainer.swift in Sources */,
 				9CB4FF0D2E7C278700CB18CB /* RegistrationView.swift in Sources */,
 				9CBDA8E32E6AF90A00DB4A1E /* PhotoPicker.swift in Sources */,
 				9CB4FEED2E7419BE00CB18CB /* AppDelegate.swift in Sources */,
 				9CBDA8DE2E6AF8EA00DB4A1E /* DesignDetailView.swift in Sources */,
 				9CBDA8E22E6AF90200DB4A1E /* MainTabView.swift in Sources */,
 				9CBDA8E12E6AF8FD00DB4A1E /* DetailAdviceView.swift in Sources */,
-				9CB4FEFE2E7A6AE500CB18CB /* NavigationMap.swift in Sources */,
 				9CB4FF0F2E7C553800CB18CB /* ProfileStore.swift in Sources */,
 				9CBDA8E72E6AF91F00DB4A1E /* Project_studyApp.swift in Sources */,
 				9CBDA8E02E6AF8F700DB4A1E /* DesignsRoute.swift in Sources */,
@@ -347,6 +350,7 @@
 				9CB4FEE52E71A3D600CB18CB /* NotificationManager.swift in Sources */,
 				9CBDA8EF2E6AF94E00DB4A1E /* AdviceViewModel.swift in Sources */,
 				9CBDA8F02E6AF94E00DB4A1E /* ProfileViewModel.swift in Sources */,
+				9CB4FF1A2E7D202700CB18CB /* AdviceTabContainer.swift in Sources */,
 				9CBDA8F12E6AF94E00DB4A1E /* DesignViewModel.swift in Sources */,
 				9CBDA8F22E6AF94E00DB4A1E /* ThemeViewModel.swift in Sources */,
 				9CBDA8F32E6AF94E00DB4A1E /* AuthViewModel.swift in Sources */,
