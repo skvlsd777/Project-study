@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C6E3F872E7FE0DA00A415E2 /* SettingsTabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6E3F862E7FE0C200A415E2 /* SettingsTabContainer.swift */; };
 		9CB4FEE52E71A3D600CB18CB /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FEE42E71A24400CB18CB /* NotificationManager.swift */; };
 		9CB4FEED2E7419BE00CB18CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FEEC2E7419BE00CB18CB /* AppDelegate.swift */; };
 		9CB4FEF42E79CA3100CB18CB /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FEF32E79CA2200CB18CB /* RootRouter.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C6E3F862E7FE0C200A415E2 /* SettingsTabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabContainer.swift; sourceTree = "<group>"; };
 		9CA139002E6C0CE3006ED853 /* Projectstudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Projectstudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CB4FEE42E71A24400CB18CB /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		9CB4FEEC2E7419BE00CB18CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -129,8 +131,9 @@
 			children = (
 				9CB4FEFF2E7A6C8900CB18CB /* TabNavStack.swift */,
 				9CB4FF172E7D1FDA00CB18CB /* DesignsTabContainer.swift */,
-				9CB4FF152E7C661400CB18CB /* ProfileTabContainer.swift */,
 				9CB4FF192E7D202400CB18CB /* AdviceTabContainer.swift */,
+				9C6E3F862E7FE0C200A415E2 /* SettingsTabContainer.swift */,
+				9CB4FF152E7C661400CB18CB /* ProfileTabContainer.swift */,
 			);
 			path = Routing;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				9CBDA8E32E6AF90A00DB4A1E /* PhotoPicker.swift in Sources */,
 				9CB4FEED2E7419BE00CB18CB /* AppDelegate.swift in Sources */,
 				9CBDA8DE2E6AF8EA00DB4A1E /* DesignDetailView.swift in Sources */,
+				9C6E3F872E7FE0DA00A415E2 /* SettingsTabContainer.swift in Sources */,
 				9CBDA8E22E6AF90200DB4A1E /* MainTabView.swift in Sources */,
 				9CBDA8E12E6AF8FD00DB4A1E /* DetailAdviceView.swift in Sources */,
 				9CB4FF0F2E7C553800CB18CB /* ProfileStore.swift in Sources */,

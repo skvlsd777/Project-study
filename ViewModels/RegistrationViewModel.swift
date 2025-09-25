@@ -24,7 +24,6 @@ final class RegistrationViewModel: ObservableObject {
         self.profiles = profiles
     }
 
-    // Простая валидация (можно ужесточить позже)
     var canSubmit: Bool {
         let u = username.trimmingCharacters(in: .whitespacesAndNewlines)
         let e = email.trimmingCharacters(in: .whitespacesAndNewlines)

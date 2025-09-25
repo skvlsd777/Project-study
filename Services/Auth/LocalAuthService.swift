@@ -1,4 +1,3 @@
-import Foundation
 import SwiftUI
 import CryptoKit
 import Security
@@ -23,22 +22,26 @@ final class LocalAuthService: AuthService, ObservableObject {
             isLoggedInFlag = true
         }
     }
+    private func normalize(_ username: String) -> String {
+        username.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+    }
 
-    // MARK: - Public API
     func register(username: String, password: String) -> Result<AuthAccount, AuthError> {
-        guard !exists(username: username) else { return .failure(.userExists) }
-        guard save(username: username, password: password) else { return .failure(.storageFailure) }
-        storedUsername = username
+        let u = normalize(username)
+        guard !exists(username: u) else { return .failure(.userExists) }
+        guard save(username: u, password: password) else { return .failure(.storageFailure) }
+        storedUsername = u
         isLoggedInFlag = true
-        return .success(AuthAccount(username: username))
+        return .success(AuthAccount(username: u))
     }
 
     func login(username: String, password: String) -> Result<AuthAccount, AuthError> {
-        guard let rec = load(username: username) else { return .failure(.userNotFound) }
+        let u = normalize(username)
+        guard let rec = load(username: u) else { return .failure(.userNotFound) }
         guard verify(password: password, with: rec) else { return .failure(.badCredentials) }
-        storedUsername = username
+        storedUsername = u
         isLoggedInFlag = true
-        return .success(AuthAccount(username: username))
+        return .success(AuthAccount(username: u))
     }
 
     func logout() {

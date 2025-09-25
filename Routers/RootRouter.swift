@@ -44,7 +44,9 @@ final class RootRouter: ObservableObject {
     func push(_ route: Route, on tab: AppTab? = nil) {
         let t = tab ?? selectedTab
         let kp = keyPath(for: t)
-        self[keyPath: kp].append(route)
+        var p = self[keyPath: kp]
+        p.append(route)
+        self[keyPath: kp] = p
     }
 
     func pop(on tab: AppTab? = nil) {

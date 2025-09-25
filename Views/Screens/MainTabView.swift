@@ -11,22 +11,21 @@ struct MainTabView: View {
 
             // ДИЗАЙНЫ
             TabNavStack(tab: .designs, isLoggedIn: $isLoggedIn) {
-                DesignsTabContainer()              // ← вместо прямого DesignsListView
+                DesignsTabContainer()
             }
             .tabItem { Label("Дизайны", systemImage: "paintbrush.fill") }
             .tag(AppTab.designs)
 
             // СОВЕТЫ
             TabNavStack(tab: .advice, isLoggedIn: $isLoggedIn) {
-                AdviceTabContainer()               // ← вместо прямого AdviceView
+                AdviceTabContainer()
             }
             .tabItem { Label("Советы", systemImage: "lightbulb.fill") }
             .tag(AppTab.advice)
 
             // НАСТРОЙКИ
             TabNavStack(tab: .settings, isLoggedIn: $isLoggedIn) {
-                SettingsView()
-                    .navigationTitle("Настройки")
+                SettingsTabContainer()
             }
             .tabItem { Label("Настройки", systemImage: "gearshape.fill") }
             .tag(AppTab.settings)
@@ -34,11 +33,9 @@ struct MainTabView: View {
             // ПРОФИЛЬ
             TabNavStack(tab: .profile, isLoggedIn: $isLoggedIn) {
                 ProfileTabContainer(isLoggedIn: $isLoggedIn)
-                    .navigationTitle("Профиль")
             }
             .tabItem { Label("Профиль", systemImage: "person.fill") }
             .tag(AppTab.profile)
-
         }
         .preferredColorScheme(themeViewModel.currentTheme)
     }
