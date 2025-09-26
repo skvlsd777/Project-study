@@ -1,100 +1,107 @@
 import SwiftUI
 
+@MainActor
 final class AuthViewModel: ObservableObject {
-    // Поля формы
+    // MARK: - Form state (ввод пользователя)
     @Published var username: String = ""
     @Published var password: String = ""
     @Published var error: String?
     @Published var isBusy: Bool = false
-    @Published var loginFailed: Bool = false // оставил, если где-то используешь
-
-    // Персистентные флаги
+    @Published var loginFailed: Bool = false
+    
+    // MARK: - Persistent UI flags (@AppStorage = локальная память устройства)
     @AppStorage(AppStorageKeys.isLoggedIn) var isLoggedIn: Bool = false
     @AppStorage(AppStorageKeys.rememberMe) var rememberMe: Bool = true
-
+    
+    // MARK: - Dependencies
     private let auth: AuthService
-
-    // По умолчанию — локальная реализация (Keychain + @AppStorage)
+    
+    // Удобно иметь вычисляемый флаг для кнопки "Войти"
+    var canSubmit: Bool { !username.isEmpty && !password.isEmpty && !isBusy }
+    
+    // MARK: - Init
+    /// По умолчанию используем локальную реализацию авторизации (Keychain + @AppStorage)
     init(auth: AuthService = LocalAuthService()) {
         self.auth = auth
-        // Синхронизируем тумблер RememberMe с сервисом
+        
+        // Синхронизируем тумблер "Запомнить меня" с сервисом (единая точка правды)
         self.rememberMe = auth.rememberMe
-
-        // Автовход, если в сервисе уже есть текущий пользователь
+        
+        // Автовход: если сервис уже знает текущего пользователя — сразу в приложение
         if let u = auth.currentUser?.username {
             self.username = u
             self.isLoggedIn = true
         }
     }
-
-    // MARK: - Actions
-
-    func setRemember(_ value: Bool) {
-        rememberMe = value
-        // если реализация локальная — обновим её флаг
-        if let local = auth as? LocalAuthService {
-            local.rememberMe = value
-        }
+    
+    // MARK: - Private
+    private func normalizedUsername() -> String {
+        // Приводим к единому виду (без пробелов по краям, нижний регистр)
+        username.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
     }
-
+    
+    // MARK: - Actions
+    func setRemember(_ value: Bool) {
+        // Держим флаг и в VM (@AppStorage), и в сервисе (через протокол)
+        rememberMe = value
+        auth.rememberMe = value
+    }
+    
     func login() {
-        guard !username.isEmpty, !password.isEmpty else {
+        let u = normalizedUsername()
+        guard !u.isEmpty, !password.isEmpty else {
             error = "Введите логин и пароль"
             loginFailed = true
             return
         }
+        
         isBusy = true
-        switch auth.login(username: username, password: password) {
+        defer { isBusy = false }
+        
+        switch auth.login(username: u, password: password) {
         case .success:
+            // Успех: чистим ошибки, отмечаем, что вошли, чистим пароль из памяти
             error = nil
             loginFailed = false
             isLoggedIn = true
+            username = u
+            password = ""
         case .failure(let e):
             error = e.localizedDescription
             loginFailed = true
         }
-        isBusy = false
     }
-
+    
     func register() {
-        guard !username.isEmpty, !password.isEmpty else {
+        let u = normalizedUsername()
+        guard !u.isEmpty, !password.isEmpty else {
             error = "Заполните поля"
             loginFailed = true
             return
         }
+        
         isBusy = true
-        switch auth.register(username: username, password: password) {
+        defer { isBusy = false }
+        
+        switch auth.register(username: u, password: password) {
         case .success:
             error = nil
             loginFailed = false
             isLoggedIn = true
+            username = u
+            password = ""
         case .failure(let e):
             error = e.localizedDescription
             loginFailed = true
         }
-        isBusy = false
     }
-
+    
     func logout(router: RootRouter) {
         auth.logout()
         isLoggedIn = false
-        // Очистим историю во всех вкладках, чтобы нельзя было «назад» в приватные экраны
+        
+        // Чистим стек навигации, чтобы нельзя было "вернуться" в приватные экраны
         router.popToRoot(on: .designs)
-        router.popToRoot(on: .advice)
-        router.popToRoot(on: .settings)
-        router.popToRoot(on: .profile)
-        // Сбросим поля формы
-        username = ""
-        password = ""
-        error = nil
-        loginFailed = false
-    }
-
-    func resetLogin() {
-        username = ""
-        password = ""
-        error = nil
-        loginFailed = false
+        router.popToRoot()
     }
 }
-

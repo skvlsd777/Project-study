@@ -17,11 +17,10 @@ final class LocalAuthService: AuthService, ObservableObject {
     }
 
     init() {
-        // автологин при запуске, если включено «Запомнить меня»
-        if rememberMe, !storedUsername.isEmpty {
-            isLoggedInFlag = true
-        }
+        // На каждом старте пересчитываем, залогинен ли пользователь прямо сейчас:
+        isLoggedInFlag = rememberMe && !storedUsername.isEmpty
     }
+
     private func normalize(_ username: String) -> String {
         username.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
     }
@@ -46,8 +45,7 @@ final class LocalAuthService: AuthService, ObservableObject {
 
     func logout() {
         isLoggedInFlag = false
-        // По желанию: если rememberMe=false, очищай сохранённый логин:
-        // if !rememberMe { storedUsername = "" }
+        if !rememberMe { storedUsername = "" }
     }
 
     // MARK: - Keychain + crypto

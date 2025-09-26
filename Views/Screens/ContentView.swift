@@ -63,7 +63,8 @@ struct ContentView: View {
                         .padding(.bottom, 4)
                 }
                 
-                TextField("Логин", text: $auth.username)
+                TextField("", text: $auth.username,
+                          prompt: Text("Логин").foregroundColor(.gray))
                     .padding()
                     .background(Color.white.opacity(0.8))
                     .cornerRadius(10)
@@ -72,11 +73,14 @@ struct ContentView: View {
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled(true)
                     .textContentType(.username)
+                    .foregroundColor(.black)
+                    .tint(.black)
                     .onChange(of: auth.username) { s in
                         auth.username = s.filter { $0.isASCII }
                     }
-                
-                SecureField("Пароль", text: $auth.password)
+
+                SecureField("", text: $auth.password,
+                            prompt: Text("Пароль").foregroundColor(.gray))
                     .padding()
                     .background(Color.white.opacity(0.8))
                     .cornerRadius(10)
@@ -85,9 +89,11 @@ struct ContentView: View {
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled(true)
                     .textContentType(.password)
+                    .foregroundColor(.black)  
+                    .tint(.black)
                     .submitLabel(.go)
                     .onSubmit { auth.login() }
-                
+
                 Toggle("Запомнить меня", isOn: Binding(
                     get: { auth.rememberMe },
                     set: { auth.setRemember($0) }

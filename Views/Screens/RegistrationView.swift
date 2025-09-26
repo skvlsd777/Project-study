@@ -13,7 +13,9 @@ struct RegistrationView: View {
                     .font(.title).bold()
                     .padding(88)
 
-                TextField("Логин", text: $vm.username)
+                // ЛОГИН
+                TextField("", text: $vm.username,
+                          prompt: Text("Логин").foregroundColor(.gray))   // читаемый плейсхолдер
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
                     .textContentType(.username)
@@ -22,8 +24,12 @@ struct RegistrationView: View {
                     .background(Color.white.opacity(0.85))
                     .cornerRadius(12)
                     .shadow(radius: 5)
+                    .foregroundColor(.black)   // <<< реальный текст всегда тёмный
+                    .tint(.black)              // <<< курсор/акцент тёмный
 
-                SecureField("Пароль", text: $vm.password)
+                // ПАРОЛЬ
+                SecureField("", text: $vm.password,
+                            prompt: Text("Пароль").foregroundColor(.gray))
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
                     .textContentType(.password)
@@ -33,8 +39,12 @@ struct RegistrationView: View {
                     .background(Color.white.opacity(0.85))
                     .cornerRadius(12)
                     .shadow(radius: 5)
+                    .foregroundColor(.black)
+                    .tint(.black)
 
-                TextField("Email", text: $vm.email)
+                // EMAIL
+                TextField("", text: $vm.email,
+                          prompt: Text("Email").foregroundColor(.gray))
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
                     .textContentType(.emailAddress)
@@ -43,6 +53,9 @@ struct RegistrationView: View {
                     .background(Color.white.opacity(0.85))
                     .cornerRadius(12)
                     .shadow(radius: 5)
+                    .foregroundColor(.black)
+                    .tint(.black)
+
 
                 if let e = vm.error {
                     Text(e).foregroundColor(.red).font(.footnote)

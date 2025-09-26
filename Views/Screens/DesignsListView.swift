@@ -8,9 +8,19 @@ struct DesignsListView: View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
                 ForEach(viewModel.designs) { design in
-                    NavigationLink(value: Route.designDetail(design)) {
-                        DesignCard(design: design).padding()
+                    let isCustom = design.name
+                        .trimmingCharacters(in: .whitespacesAndNewlines)
+                        .lowercased() == "кастом"
+
+                    NavigationLink(
+                        value: isCustom
+                            ? Route.customization
+                            : Route.designDetail(design)
+                    ) {
+                        DesignCard(design: design)
+                            .padding()
                     }
+                    .buttonStyle(.plain)
                 }
             }
             .padding()
@@ -29,7 +39,11 @@ struct DesignCard: View {
                 .frame(width: (UIScreen.main.bounds.width / 2) - 32, height: 200)
                 .clipped()
                 .cornerRadius(25)
-            Text(design.name).font(.headline).foregroundColor(.white).padding(.top, 5)
+
+            Text(design.name)
+                .font(.headline)
+                .foregroundColor(.white)
+                .padding(.top, 5)
         }
         .frame(maxWidth: .infinity)
         .background(Color.black.opacity(0.2))
@@ -39,8 +53,6 @@ struct DesignCard: View {
     }
 }
 
-
-// Превью только для Xcode — оборачиваем в NavigationStack, чтобы увидеть заголовок
 struct DesignsListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
@@ -49,5 +61,6 @@ struct DesignsListView_Previews: PreviewProvider {
         }
     }
 }
+
 
 
