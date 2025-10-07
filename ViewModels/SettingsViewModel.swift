@@ -16,7 +16,10 @@ class SettingsViewModel: ObservableObject {
         "Apple Watch Series 8",
         "Apple Watch SE (2nd generation)",
         "Apple Watch Ultra",
-        "Apple Watch Series 9"
+        "Apple Watch Series 9",
+        "Apple Watch Ultra 2",
+        "Apple Watch Ultra 3",
+        "Apple Watch Series 10 (X)"
     ]
     
     init(settings: Settings = Settings(selectedDevice: "Apple Watch Series 8", isDarkMode: false, notificationsEnabled: true)) {

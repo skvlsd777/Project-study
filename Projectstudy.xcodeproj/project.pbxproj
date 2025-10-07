@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9C6E3F872E7FE0DA00A415E2 /* SettingsTabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6E3F862E7FE0C200A415E2 /* SettingsTabContainer.swift */; };
+		9CA7716A2E90E00800D116AC /* WatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA771692E90E00500D116AC /* WatchModel.swift */; };
+		9CA7716D2E90E07A00D116AC /* WatchPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7716C2E90E06F00D116AC /* WatchPreview.swift */; };
 		9CB4FEE52E71A3D600CB18CB /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FEE42E71A24400CB18CB /* NotificationManager.swift */; };
 		9CB4FEED2E7419BE00CB18CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FEEC2E7419BE00CB18CB /* AppDelegate.swift */; };
 		9CB4FEF42E79CA3100CB18CB /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FEF32E79CA2200CB18CB /* RootRouter.swift */; };
@@ -55,6 +57,8 @@
 /* Begin PBXFileReference section */
 		9C6E3F862E7FE0C200A415E2 /* SettingsTabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabContainer.swift; sourceTree = "<group>"; };
 		9CA139002E6C0CE3006ED853 /* Projectstudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Projectstudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CA771692E90E00500D116AC /* WatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchModel.swift; sourceTree = "<group>"; };
+		9CA7716C2E90E06F00D116AC /* WatchPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchPreview.swift; sourceTree = "<group>"; };
 		9CB4FEE42E71A24400CB18CB /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		9CB4FEEC2E7419BE00CB18CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CB4FEF32E79CA2200CB18CB /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
@@ -110,6 +114,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9CA7716B2E90E05B00D116AC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				9CA7716C2E90E06F00D116AC /* WatchPreview.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		9CB4FEE22E71A1AA00CB18CB /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +217,7 @@
 				9CBDA8BC2E6AF4AB00DB4A1E /* UserProfile.swift */,
 				9CBDA8BD2E6AF4AB00DB4A1E /* Wallpaper.swift */,
 				9CBDA8D12E6AF4AB00DB4A1E /* DesignsRoute.swift */,
+				9CA771692E90E00500D116AC /* WatchModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -235,6 +248,7 @@
 		9CBDA8D82E6AF4AB00DB4A1E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9CA7716B2E90E05B00D116AC /* Components */,
 				9CB4FEF62E7A687500CB18CB /* Screens */,
 				9CB4FEF52E7A683C00CB18CB /* Routing */,
 			);
@@ -338,6 +352,7 @@
 				9CBDA8E12E6AF8FD00DB4A1E /* DetailAdviceView.swift in Sources */,
 				9CB4FF0F2E7C553800CB18CB /* ProfileStore.swift in Sources */,
 				9CBDA8E72E6AF91F00DB4A1E /* Project_studyApp.swift in Sources */,
+				9CA7716A2E90E00800D116AC /* WatchModel.swift in Sources */,
 				9CBDA8E02E6AF8F700DB4A1E /* DesignsRoute.swift in Sources */,
 				9CB4FF032E7AAF0900CB18CB /* AppStorageKeys.swift in Sources */,
 				9CBDA8DC2E6AF8DB00DB4A1E /* ContentView.swift in Sources */,
@@ -362,6 +377,7 @@
 				9CBDA8F52E6AF94E00DB4A1E /* SettingsViewModel.swift in Sources */,
 				9CBDA8EE2E6AF93500DB4A1E /* CustomizationData.swift in Sources */,
 				9CB4FEF42E79CA3100CB18CB /* RootRouter.swift in Sources */,
+				9CA7716D2E90E07A00D116AC /* WatchPreview.swift in Sources */,
 				9CB4FF122E7C5B9500CB18CB /* AccountProfile.swift in Sources */,
 				9CB4FF0A2E7AB43500CB18CB /* AuthService.swift in Sources */,
 				9CB4FF0B2E7AB43C00CB18CB /* LocalAuthService.swift in Sources */,
