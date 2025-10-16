@@ -1,58 +1,45 @@
-import Foundation
-import Combine
+import SwiftUI
 
+@MainActor
 final class RegistrationViewModel: ObservableObject {
-    // Ввод
-    @Published var username: String = ""
-    @Published var password: String = ""
-    @Published var email: String = ""
+    @Published var username = ""
+    @Published var email    = ""
+    @Published var password = ""
+    @Published var errorMessage: String?
+    @Published var isBusy = false
 
-    // Состояния
-    @Published var error: String?
-    @Published var isBusy: Bool = false
-
-    // Зависимости
-    private let auth: AuthService
-    private let profiles: ProfileStore
-
-    /// Вызовется при успешной регистрации — вью закроет модалку
+    /// Коллбек — что делать после успешной регистрации (например, закрыть экран)
     var onSuccess: (() -> Void)?
 
-    init(auth: AuthService = LocalAuthService(),
-         profiles: ProfileStore = ProfileStore()) {
-        self.auth = auth
-        self.profiles = profiles
-    }
+    /// Удобный флаг для кнопки
+    var canSubmit: Bool { !username.isEmpty && !email.isEmpty && !password.isEmpty && !isBusy }
 
-    var canSubmit: Bool {
-        let u = username.trimmingCharacters(in: .whitespacesAndNewlines)
-        let e = email.trimmingCharacters(in: .whitespacesAndNewlines)
-        return u.count >= 3
-        && password.count >= 6
-        && e.contains("@")
-        && e.contains(".")
-    }
+    private let auth: AuthService
+
+    init(auth: AuthService) { self.auth = auth }
 
     func register() {
-        error = nil
-        guard canSubmit else {
-            error = "Проверьте корректность полей"
-            return
-        }
-
-        isBusy = true
-        // нормализуем
         let u = username.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         let e = email.trimmingCharacters(in: .whitespacesAndNewlines)
+        let p = password.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        switch auth.register(username: u, password: password) {
-        case .success:
-            _ = profiles.createProfile(username: u, email: e)
-            isBusy = false
-            onSuccess?()   // закрыть модалку
-        case .failure(let err):
-            error = err.localizedDescription
-            isBusy = false
+        guard !u.isEmpty, !e.isEmpty, !p.isEmpty else {
+            errorMessage = "Заполните все поля"; return
+        }
+
+        Task {
+            isBusy = true; defer { isBusy = false }
+            do {
+                let req = RegisterRequest(username: u, email: e, password: p)
+                _ = try await auth.register(req)
+                errorMessage = nil
+                onSuccess?()                  // <- сообщаем наверх об успехе
+            } catch let er as ErrorResponse {
+                errorMessage = er.message
+            } catch {
+                errorMessage = "Ошибка регистрации"
+            }
         }
     }
 }
+

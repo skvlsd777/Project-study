@@ -4,18 +4,29 @@ struct RegistrationView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var themeViewModel: ThemeViewModel
 
-    @StateObject private var vm = RegistrationViewModel()
+    @StateObject private var vm: RegistrationViewModel
+
+    // DEBUG: можно вызывать RegistrationView() без параметров
+    #if DEBUG
+    init(auth: AuthService = PreviewDI.authService) {
+        _vm = StateObject(wrappedValue: RegistrationViewModel(auth: auth))
+    }
+    #else
+    // RELEASE: сервис обязателен
+    init(auth: AuthService) {
+        _vm = StateObject(wrappedValue: RegistrationViewModel(auth: auth))
+    }
+    #endif
 
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
                 Text("Регистрация")
-                    .font(.title).bold()
+                    .font(.title.bold())
                     .padding(88)
 
-                // ЛОГИН
                 TextField("", text: $vm.username,
-                          prompt: Text("Логин").foregroundColor(.gray))   // читаемый плейсхолдер
+                          prompt: Text("Логин").foregroundColor(.gray))
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
                     .textContentType(.username)
@@ -24,10 +35,9 @@ struct RegistrationView: View {
                     .background(Color.white.opacity(0.85))
                     .cornerRadius(12)
                     .shadow(radius: 5)
-                    .foregroundColor(.black)   // <<< реальный текст всегда тёмный
-                    .tint(.black)              // <<< курсор/акцент тёмный
+                    .foregroundColor(.black)
+                    .tint(.black)
 
-                // ПАРОЛЬ
                 SecureField("", text: $vm.password,
                             prompt: Text("Пароль").foregroundColor(.gray))
                     .textInputAutocapitalization(.never)
@@ -42,7 +52,6 @@ struct RegistrationView: View {
                     .foregroundColor(.black)
                     .tint(.black)
 
-                // EMAIL
                 TextField("", text: $vm.email,
                           prompt: Text("Email").foregroundColor(.gray))
                     .textInputAutocapitalization(.never)
@@ -56,8 +65,7 @@ struct RegistrationView: View {
                     .foregroundColor(.black)
                     .tint(.black)
 
-
-                if let e = vm.error {
+                if let e = vm.errorMessage {
                     Text(e).foregroundColor(.red).font(.footnote)
                 }
 
@@ -65,10 +73,10 @@ struct RegistrationView: View {
                     Button("Зарегистрироваться") { vm.register() }
                         .frame(width: 180)
                         .padding()
-                        .background(vm.canSubmit && !vm.isBusy ? Color.green : Color.gray)
+                        .background(vm.canSubmit ? Color.green : Color.gray)
                         .foregroundColor(.white)
                         .cornerRadius(12)
-                        .disabled(!vm.canSubmit || vm.isBusy)
+                        .disabled(!vm.canSubmit)
 
                     Button("Отмена") { dismiss() }
                         .frame(maxWidth: .infinity)
@@ -79,7 +87,6 @@ struct RegistrationView: View {
                 }
 
                 if vm.isBusy { ProgressView().padding(.top, 6) }
-
                 Spacer(minLength: 32)
             }
             .padding(.horizontal, 20)
@@ -87,15 +94,13 @@ struct RegistrationView: View {
             .padding(.bottom, 24)
             .frame(maxWidth: .infinity)
         }
-        // твой фон «без ZStack»
         .background(
             Group {
-                if themeViewModel.currentTheme == .dark {
-                    Color.black.opacity(0.6)
-                } else {
-                    Color.clear
-                }
-            }.ignoresSafeArea()
+                themeViewModel.currentTheme == .dark
+                    ? Color.black.opacity(0.6)
+                    : Color.clear
+            }
+            .ignoresSafeArea()
         )
         .background(
             Image("Wallpaper")
@@ -108,10 +113,9 @@ struct RegistrationView: View {
     }
 }
 
-
 struct RegistrationView_Previews: PreviewProvider {
     static var previews: some View {
-        RegistrationView()
+        RegistrationView(auth: PreviewDI.authService)
             .environmentObject(ThemeViewModel())
     }
 }

@@ -16,13 +16,27 @@ final class ProfileStore {
         defaults.set(data, forKey: key)
         return true
     }
+    
+    private func nextId(in dict: [String: AccountProfile]) -> Int {
+        (dict.values.map { $0.id }.max() ?? 0) + 1
+    }
 
     // MARK: Public API
 
     @discardableResult
     func createProfile(username: String, email: String) -> Bool {
         var all = readAll()
-        all[username] = AccountProfile(username: username, email: email, firstName: nil, lastName: nil)
+        let profile = AccountProfile(
+            id: nextId(in: all),
+            username: username,
+            password: nil,
+            email: email,
+            firstName: nil,
+            lastName: nil,
+            city: nil,
+            avatar: nil
+        )
+        all[username] = profile
         return writeAll(all)
     }
 
@@ -37,14 +51,25 @@ final class ProfileStore {
         return writeAll(all)
     }
 
-    /// На будущее, когда будем переименовывать логин
     @discardableResult
     func renameUsername(old: String, new: String) -> Bool {
         var all = readAll()
         guard let prof = all.removeValue(forKey: old) else { return false }
-        all[new] = AccountProfile(username: new, email: prof.email, firstName: prof.firstName, lastName: prof.lastName)
+
+        let renamed = AccountProfile(
+            id: prof.id,                 // сохраняем прежний id
+            username: new,
+            password: prof.password,
+            email: prof.email,
+            firstName: prof.firstName,
+            lastName: prof.lastName,
+            city: prof.city,
+            avatar: prof.avatar
+        )
+        all[new] = renamed
         return writeAll(all)
     }
+
 
     func deleteProfile(username: String) {
         var all = readAll()

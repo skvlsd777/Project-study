@@ -8,6 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		9C6E3F872E7FE0DA00A415E2 /* SettingsTabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6E3F862E7FE0C200A415E2 /* SettingsTabContainer.swift */; };
+		9C8FE0292E995AE4001EF9F7 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 9C8FE0282E995AE4001EF9F7 /* CombineMoya */; };
+		9C8FE02B2E995AE4001EF9F7 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 9C8FE02A2E995AE4001EF9F7 /* Moya */; };
+		9C8FE02D2E995AE4001EF9F7 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 9C8FE02C2E995AE4001EF9F7 /* ReactiveMoya */; };
+		9C8FE02F2E995AE4001EF9F7 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 9C8FE02E2E995AE4001EF9F7 /* RxMoya */; };
+		9C8FE0392E99611A001EF9F7 /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FE0382E996102001EF9F7 /* APIConfig.swift */; };
+		9C8FE03C2E99614D001EF9F7 /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FE03B2E996145001EF9F7 /* AuthDTO.swift */; };
+		9C8FE03E2E99622B001EF9F7 /* ProfileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FE03D2E996223001EF9F7 /* ProfileDTO.swift */; };
+		9C8FE0412E996272001EF9F7 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FE0402E996266001EF9F7 /* AuthAPI.swift */; };
+		9C8FE0432E99629A001EF9F7 /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FE0422E996296001EF9F7 /* ProfileAPI.swift */; };
+		9C8FE0462E996334001EF9F7 /* Providers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FE0452E99632F001EF9F7 /* Providers.swift */; };
+		9C8FE0482E9963A0001EF9F7 /* Moya+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FE0472E99639E001EF9F7 /* Moya+Async.swift */; };
+		9C8FE04A2E9963D5001EF9F7 /* AuthorizedAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FE0492E9963D4001EF9F7 /* AuthorizedAPI.swift */; };
+		9C8FE04C2E9963F0001EF9F7 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FE04B2E9963EC001EF9F7 /* Services.swift */; };
+		9C8FE04E2E99670E001EF9F7 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FE04D2E9966FE001EF9F7 /* AppContainer.swift */; };
+		9C8FE0512E9D1ADE001EF9F7 /* PreviewDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FE0502E9D1ACA001EF9F7 /* PreviewDI.swift */; };
+		9C8FE0552E9E47D7001EF9F7 /* AuthViewModel+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FE0522E9D1AF2001EF9F7 /* AuthViewModel+Preview.swift */; };
+		9C8FE0572E9E4B02001EF9F7 /* AppRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FE0562E9E4B00001EF9F7 /* AppRoot.swift */; };
+		9C8FE05B2E9E4DC0001EF9F7 /* Project_studyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FE05A2E9E4DC0001EF9F7 /* Project_studyApp.swift */; };
 		9CA7716A2E90E00800D116AC /* WatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA771692E90E00500D116AC /* WatchModel.swift */; };
 		9CA7716D2E90E07A00D116AC /* WatchPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7716C2E90E06F00D116AC /* WatchPreview.swift */; };
 		9CB4FEE52E71A3D600CB18CB /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FEE42E71A24400CB18CB /* NotificationManager.swift */; };
@@ -16,7 +34,6 @@
 		9CB4FF002E7A6C8B00CB18CB /* TabNavStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FEFF2E7A6C8900CB18CB /* TabNavStack.swift */; };
 		9CB4FF032E7AAF0900CB18CB /* AppStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FF022E7AAF0400CB18CB /* AppStorageKeys.swift */; };
 		9CB4FF0A2E7AB43500CB18CB /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FF082E7AAFA200CB18CB /* AuthService.swift */; };
-		9CB4FF0B2E7AB43C00CB18CB /* LocalAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FF092E7AB29500CB18CB /* LocalAuthService.swift */; };
 		9CB4FF0D2E7C278700CB18CB /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FF0C2E7C278100CB18CB /* RegistrationView.swift */; };
 		9CB4FF0F2E7C553800CB18CB /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FF0E2E7C553000CB18CB /* ProfileStore.swift */; };
 		9CB4FF122E7C5B9500CB18CB /* AccountProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4FF112E7C5B8800CB18CB /* AccountProfile.swift */; };
@@ -36,7 +53,6 @@
 		9CBDA8E42E6AF91000DB4A1E /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBDA8D52E6AF4AB00DB4A1E /* ProfileEditView.swift */; };
 		9CBDA8E52E6AF91500DB4A1E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBDA8D62E6AF4AB00DB4A1E /* ProfileView.swift */; };
 		9CBDA8E62E6AF91A00DB4A1E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBDA8D72E6AF4AB00DB4A1E /* SettingsView.swift */; };
-		9CBDA8E72E6AF91F00DB4A1E /* Project_studyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBDA8B12E6AF4AB00DB4A1E /* Project_studyApp.swift */; };
 		9CBDA8E82E6AF93500DB4A1E /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBDA8BC2E6AF4AB00DB4A1E /* UserProfile.swift */; };
 		9CBDA8E92E6AF93500DB4A1E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBDA8BB2E6AF4AB00DB4A1E /* User.swift */; };
 		9CBDA8EA2E6AF93500DB4A1E /* Wallpaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBDA8BD2E6AF4AB00DB4A1E /* Wallpaper.swift */; };
@@ -56,6 +72,20 @@
 
 /* Begin PBXFileReference section */
 		9C6E3F862E7FE0C200A415E2 /* SettingsTabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabContainer.swift; sourceTree = "<group>"; };
+		9C8FE0382E996102001EF9F7 /* APIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
+		9C8FE03B2E996145001EF9F7 /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
+		9C8FE03D2E996223001EF9F7 /* ProfileDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDTO.swift; sourceTree = "<group>"; };
+		9C8FE0402E996266001EF9F7 /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		9C8FE0422E996296001EF9F7 /* ProfileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPI.swift; sourceTree = "<group>"; };
+		9C8FE0452E99632F001EF9F7 /* Providers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Providers.swift; sourceTree = "<group>"; };
+		9C8FE0472E99639E001EF9F7 /* Moya+Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Moya+Async.swift"; sourceTree = "<group>"; };
+		9C8FE0492E9963D4001EF9F7 /* AuthorizedAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizedAPI.swift; sourceTree = "<group>"; };
+		9C8FE04B2E9963EC001EF9F7 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		9C8FE04D2E9966FE001EF9F7 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		9C8FE0502E9D1ACA001EF9F7 /* PreviewDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDI.swift; sourceTree = "<group>"; };
+		9C8FE0522E9D1AF2001EF9F7 /* AuthViewModel+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthViewModel+Preview.swift"; sourceTree = "<group>"; };
+		9C8FE0562E9E4B00001EF9F7 /* AppRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoot.swift; sourceTree = "<group>"; };
+		9C8FE05A2E9E4DC0001EF9F7 /* Project_studyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project_studyApp.swift; sourceTree = "<group>"; };
 		9CA139002E6C0CE3006ED853 /* Projectstudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Projectstudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CA771692E90E00500D116AC /* WatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchModel.swift; sourceTree = "<group>"; };
 		9CA7716C2E90E06F00D116AC /* WatchPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchPreview.swift; sourceTree = "<group>"; };
@@ -65,7 +95,6 @@
 		9CB4FEFF2E7A6C8900CB18CB /* TabNavStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabNavStack.swift; sourceTree = "<group>"; };
 		9CB4FF022E7AAF0400CB18CB /* AppStorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageKeys.swift; sourceTree = "<group>"; };
 		9CB4FF082E7AAFA200CB18CB /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		9CB4FF092E7AB29500CB18CB /* LocalAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthService.swift; sourceTree = "<group>"; };
 		9CB4FF0C2E7C278100CB18CB /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		9CB4FF0E2E7C553000CB18CB /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
 		9CB4FF112E7C5B8800CB18CB /* AccountProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountProfile.swift; sourceTree = "<group>"; };
@@ -73,7 +102,6 @@
 		9CB4FF152E7C661400CB18CB /* ProfileTabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabContainer.swift; sourceTree = "<group>"; };
 		9CB4FF172E7D1FDA00CB18CB /* DesignsTabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignsTabContainer.swift; sourceTree = "<group>"; };
 		9CB4FF192E7D202400CB18CB /* AdviceTabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceTabContainer.swift; sourceTree = "<group>"; };
-		9CBDA8B12E6AF4AB00DB4A1E /* Project_studyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project_studyApp.swift; sourceTree = "<group>"; };
 		9CBDA8B72E6AF4AB00DB4A1E /* AdviceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceItem.swift; sourceTree = "<group>"; };
 		9CBDA8B82E6AF4AB00DB4A1E /* CustomizationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationData.swift; sourceTree = "<group>"; };
 		9CBDA8B92E6AF4AB00DB4A1E /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
@@ -108,12 +136,65 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C8FE02B2E995AE4001EF9F7 /* Moya in Frameworks */,
+				9C8FE0292E995AE4001EF9F7 /* CombineMoya in Frameworks */,
+				9C8FE02F2E995AE4001EF9F7 /* RxMoya in Frameworks */,
+				9C8FE02D2E995AE4001EF9F7 /* ReactiveMoya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C8FE0302E995E69001EF9F7 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				9C8FE0442E9962E0001EF9F7 /* Providers */,
+				9C8FE03F2E996258001EF9F7 /* Targets */,
+				9C8FE0382E996102001EF9F7 /* APIConfig.swift */,
+				9C8FE03A2E99613B001EF9F7 /* DTO */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		9C8FE03A2E99613B001EF9F7 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				9C8FE03B2E996145001EF9F7 /* AuthDTO.swift */,
+				9C8FE03D2E996223001EF9F7 /* ProfileDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		9C8FE03F2E996258001EF9F7 /* Targets */ = {
+			isa = PBXGroup;
+			children = (
+				9C8FE0422E996296001EF9F7 /* ProfileAPI.swift */,
+				9C8FE0402E996266001EF9F7 /* AuthAPI.swift */,
+			);
+			path = Targets;
+			sourceTree = "<group>";
+		};
+		9C8FE0442E9962E0001EF9F7 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				9C8FE04B2E9963EC001EF9F7 /* Services.swift */,
+				9C8FE0492E9963D4001EF9F7 /* AuthorizedAPI.swift */,
+				9C8FE0472E99639E001EF9F7 /* Moya+Async.swift */,
+				9C8FE0452E99632F001EF9F7 /* Providers.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		9C8FE04F2E9D1A9F001EF9F7 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				9C8FE0522E9D1AF2001EF9F7 /* AuthViewModel+Preview.swift */,
+				9C8FE0502E9D1ACA001EF9F7 /* PreviewDI.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		9CA7716B2E90E05B00D116AC /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,8 +234,8 @@
 		9CB4FEF62E7A687500CB18CB /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				9CBDA8CD2E6AF4AB00DB4A1E /* ContentView.swift */,
 				9CB4FF0C2E7C278100CB18CB /* RegistrationView.swift */,
+				9CBDA8CD2E6AF4AB00DB4A1E /* ContentView.swift */,
 				9CBDA8D32E6AF4AB00DB4A1E /* MainTabView.swift */,
 				9CBDA8D02E6AF4AB00DB4A1E /* DesignsListView.swift */,
 				9CBDA8CC2E6AF4AB00DB4A1E /* AdviceView.swift */,
@@ -181,7 +262,6 @@
 		9CB4FF072E7AAF9100CB18CB /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				9CB4FF092E7AB29500CB18CB /* LocalAuthService.swift */,
 				9CB4FF082E7AAFA200CB18CB /* AuthService.swift */,
 			);
 			path = Auth;
@@ -199,9 +279,11 @@
 		9CBDA8B22E6AF4AB00DB4A1E /* App */ = {
 			isa = PBXGroup;
 			children = (
-				9CBDA8B12E6AF4AB00DB4A1E /* Project_studyApp.swift */,
+				9C8FE05A2E9E4DC0001EF9F7 /* Project_studyApp.swift */,
 				9CB4FEEC2E7419BE00CB18CB /* AppDelegate.swift */,
 				9CB4FF022E7AAF0400CB18CB /* AppStorageKeys.swift */,
+				9C8FE04D2E9966FE001EF9F7 /* AppContainer.swift */,
+				9C8FE0562E9E4B00001EF9F7 /* AppRoot.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -262,7 +344,9 @@
 				9CBDA8CB2E6AF4AB00DB4A1E /* ViewModels */,
 				9CBDA8BE2E6AF4AB00DB4A1E /* Models */,
 				9CBDA8D82E6AF4AB00DB4A1E /* Views */,
+				9C8FE0302E995E69001EF9F7 /* Networking */,
 				9CB4FEE22E71A1AA00CB18CB /* Managers */,
+				9C8FE04F2E9D1A9F001EF9F7 /* Support */,
 				9CB4FF042E7AAF4400CB18CB /* Services */,
 				9CB4FEF02E79252300CB18CB /* Routers */,
 				9CBDA8C32E6AF4AB00DB4A1E /* Resources */,
@@ -314,6 +398,9 @@
 				Base,
 			);
 			mainGroup = F216FA662D8DAF8200BDF960;
+			packageReferences = (
+				9C8FE0272E995AE4001EF9F7 /* XCRemoteSwiftPackageReference "Moya" */,
+			);
 			productRefGroup = F216FA662D8DAF8200BDF960;
 			projectDirPath = "";
 			projectRoot = "";
@@ -343,18 +430,20 @@
 				9CBDA8DF2E6AF8F100DB4A1E /* DesignsListView.swift in Sources */,
 				9CBDA8E42E6AF91000DB4A1E /* ProfileEditView.swift in Sources */,
 				9CB4FF182E7D1FDE00CB18CB /* DesignsTabContainer.swift in Sources */,
+				9C8FE0462E996334001EF9F7 /* Providers.swift in Sources */,
 				9CB4FF0D2E7C278700CB18CB /* RegistrationView.swift in Sources */,
 				9CBDA8E32E6AF90A00DB4A1E /* PhotoPicker.swift in Sources */,
+				9C8FE04C2E9963F0001EF9F7 /* Services.swift in Sources */,
 				9CB4FEED2E7419BE00CB18CB /* AppDelegate.swift in Sources */,
 				9CBDA8DE2E6AF8EA00DB4A1E /* DesignDetailView.swift in Sources */,
 				9C6E3F872E7FE0DA00A415E2 /* SettingsTabContainer.swift in Sources */,
 				9CBDA8E22E6AF90200DB4A1E /* MainTabView.swift in Sources */,
 				9CBDA8E12E6AF8FD00DB4A1E /* DetailAdviceView.swift in Sources */,
 				9CB4FF0F2E7C553800CB18CB /* ProfileStore.swift in Sources */,
-				9CBDA8E72E6AF91F00DB4A1E /* Project_studyApp.swift in Sources */,
 				9CA7716A2E90E00800D116AC /* WatchModel.swift in Sources */,
 				9CBDA8E02E6AF8F700DB4A1E /* DesignsRoute.swift in Sources */,
 				9CB4FF032E7AAF0900CB18CB /* AppStorageKeys.swift in Sources */,
+				9C8FE05B2E9E4DC0001EF9F7 /* Project_studyApp.swift in Sources */,
 				9CBDA8DC2E6AF8DB00DB4A1E /* ContentView.swift in Sources */,
 				9CB4FF162E7C663C00CB18CB /* ProfileTabContainer.swift in Sources */,
 				9CBDA8E62E6AF91A00DB4A1E /* SettingsView.swift in Sources */,
@@ -362,25 +451,35 @@
 				9CBDA8E82E6AF93500DB4A1E /* UserProfile.swift in Sources */,
 				9CBDA8E92E6AF93500DB4A1E /* User.swift in Sources */,
 				9CBDA8EA2E6AF93500DB4A1E /* Wallpaper.swift in Sources */,
+				9C8FE0512E9D1ADE001EF9F7 /* PreviewDI.swift in Sources */,
 				9CBDA8EB2E6AF93500DB4A1E /* Settings.swift in Sources */,
 				9CBDA8EC2E6AF93500DB4A1E /* Design.swift in Sources */,
 				9CB4FF142E7C5CC700CB18CB /* RegistrationViewModel.swift in Sources */,
+				9C8FE0392E99611A001EF9F7 /* APIConfig.swift in Sources */,
+				9C8FE0412E996272001EF9F7 /* AuthAPI.swift in Sources */,
 				9CBDA8ED2E6AF93500DB4A1E /* AdviceItem.swift in Sources */,
+				9C8FE0552E9E47D7001EF9F7 /* AuthViewModel+Preview.swift in Sources */,
 				9CB4FEE52E71A3D600CB18CB /* NotificationManager.swift in Sources */,
 				9CBDA8EF2E6AF94E00DB4A1E /* AdviceViewModel.swift in Sources */,
 				9CBDA8F02E6AF94E00DB4A1E /* ProfileViewModel.swift in Sources */,
+				9C8FE0432E99629A001EF9F7 /* ProfileAPI.swift in Sources */,
 				9CB4FF1A2E7D202700CB18CB /* AdviceTabContainer.swift in Sources */,
 				9CBDA8F12E6AF94E00DB4A1E /* DesignViewModel.swift in Sources */,
+				9C8FE03C2E99614D001EF9F7 /* AuthDTO.swift in Sources */,
+				9C8FE0482E9963A0001EF9F7 /* Moya+Async.swift in Sources */,
 				9CBDA8F22E6AF94E00DB4A1E /* ThemeViewModel.swift in Sources */,
+				9C8FE04A2E9963D5001EF9F7 /* AuthorizedAPI.swift in Sources */,
 				9CBDA8F32E6AF94E00DB4A1E /* AuthViewModel.swift in Sources */,
 				9CBDA8F42E6AF94E00DB4A1E /* CustomViewModel.swift in Sources */,
 				9CBDA8F52E6AF94E00DB4A1E /* SettingsViewModel.swift in Sources */,
 				9CBDA8EE2E6AF93500DB4A1E /* CustomizationData.swift in Sources */,
 				9CB4FEF42E79CA3100CB18CB /* RootRouter.swift in Sources */,
 				9CA7716D2E90E07A00D116AC /* WatchPreview.swift in Sources */,
+				9C8FE04E2E99670E001EF9F7 /* AppContainer.swift in Sources */,
+				9C8FE03E2E99622B001EF9F7 /* ProfileDTO.swift in Sources */,
 				9CB4FF122E7C5B9500CB18CB /* AccountProfile.swift in Sources */,
 				9CB4FF0A2E7AB43500CB18CB /* AuthService.swift in Sources */,
-				9CB4FF0B2E7AB43C00CB18CB /* LocalAuthService.swift in Sources */,
+				9C8FE0572E9E4B02001EF9F7 /* AppRoot.swift in Sources */,
 				9CB4FF002E7A6C8B00CB18CB /* TabNavStack.swift in Sources */,
 				9CBDA8DB2E6AF8BC00DB4A1E /* AdviceView.swift in Sources */,
 			);
@@ -587,6 +686,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9C8FE0272E995AE4001EF9F7 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9C8FE0282E995AE4001EF9F7 /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9C8FE0272E995AE4001EF9F7 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
+		};
+		9C8FE02A2E995AE4001EF9F7 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9C8FE0272E995AE4001EF9F7 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		9C8FE02C2E995AE4001EF9F7 /* ReactiveMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9C8FE0272E995AE4001EF9F7 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = ReactiveMoya;
+		};
+		9C8FE02E2E995AE4001EF9F7 /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9C8FE0272E995AE4001EF9F7 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F216FA672D8DAF8200BDF960 /* Project object */;
 }

@@ -23,7 +23,8 @@ final class ProfileViewModel: ObservableObject {
 
     func saveProfile(email: String, firstName: String, lastName: String, city: String) {
         var profile = store.loadProfile(username: username) ??
-                      AccountProfile(username: username, email: email, firstName: nil, lastName: nil, city: nil)
+            AccountProfile(id: 0, username: username, password: nil, email: email,
+                           firstName: nil, lastName: nil, city: nil, avatar: nil)
         profile.email = email
         profile.firstName = firstName.isEmpty ? nil : firstName
         profile.lastName  = lastName.isEmpty  ? nil : lastName

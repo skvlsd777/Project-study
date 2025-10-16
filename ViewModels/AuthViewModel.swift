@@ -2,106 +2,76 @@ import SwiftUI
 
 @MainActor
 final class AuthViewModel: ObservableObject {
-    // MARK: - Form state (ввод пользователя)
-    @Published var username: String = ""
-    @Published var password: String = ""
-    @Published var error: String?
-    @Published var isBusy: Bool = false
-    @Published var loginFailed: Bool = false
-    
-    // MARK: - Persistent UI flags (@AppStorage = локальная память устройства)
-    @AppStorage(AppStorageKeys.isLoggedIn) var isLoggedIn: Bool = false
-    @AppStorage(AppStorageKeys.rememberMe) var rememberMe: Bool = true
-    
-    // MARK: - Dependencies
+    @Published var username = ""
+    @Published var password = ""
+    @Published var errorMessage: String?   // ← было `error`
+    @Published var isBusy = false
+    @Published var loginFailed = false
+    @AppStorage(AppStorageKeys.isLoggedIn) var isLoggedIn = false
+    @AppStorage(AppStorageKeys.rememberMe) var rememberMe = true
+
     private let auth: AuthService
-    
-    // Удобно иметь вычисляемый флаг для кнопки "Войти"
+    var authService: AuthService { auth }
     var canSubmit: Bool { !username.isEmpty && !password.isEmpty && !isBusy }
-    
-    // MARK: - Init
-    /// По умолчанию используем локальную реализацию авторизации (Keychain + @AppStorage)
-    init(auth: AuthService = LocalAuthService()) {
-        self.auth = auth
-        
-        // Синхронизируем тумблер "Запомнить меня" с сервисом (единая точка правды)
-        self.rememberMe = auth.rememberMe
-        
-        // Автовход: если сервис уже знает текущего пользователя — сразу в приложение
-        if let u = auth.currentUser?.username {
-            self.username = u
-            self.isLoggedIn = true
-        }
-    }
-    
-    // MARK: - Private
-    private func normalizedUsername() -> String {
-        // Приводим к единому виду (без пробелов по краям, нижний регистр)
-        username.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
-    }
-    
-    // MARK: - Actions
-    func setRemember(_ value: Bool) {
-        // Держим флаг и в VM (@AppStorage), и в сервисе (через протокол)
-        rememberMe = value
-        auth.rememberMe = value
-    }
-    
+
+    init(auth: AuthService) { self.auth = auth }
+
+    func setRemember(_ value: Bool) { rememberMe = value }
+
     func login() {
-        let u = normalizedUsername()
+        let u = username.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         guard !u.isEmpty, !password.isEmpty else {
-            error = "Введите логин и пароль"
-            loginFailed = true
+            self.errorMessage = "Введите логин и пароль"
+            self.loginFailed = true
             return
         }
-        
-        isBusy = true
-        defer { isBusy = false }
-        
-        switch auth.login(username: u, password: password) {
-        case .success:
-            // Успех: чистим ошибки, отмечаем, что вошли, чистим пароль из памяти
-            error = nil
-            loginFailed = false
-            isLoggedIn = true
-            username = u
-            password = ""
-        case .failure(let e):
-            error = e.localizedDescription
-            loginFailed = true
+        Task {
+            self.isBusy = true
+            defer { self.isBusy = false }
+            do {
+                let req = LoginRequest(emailOrUsername: u, password: self.password)
+                _ = try await auth.login(req)
+                self.errorMessage = nil
+                self.loginFailed = false
+                self.isLoggedIn = true
+                self.username = u
+                self.password = ""
+            } catch let e as ErrorResponse {
+                self.errorMessage = e.message
+                self.loginFailed = true
+            } catch {
+                self.errorMessage = "Ошибка входа"
+                self.loginFailed = true
+            }
         }
     }
-    
-    func register() {
-        let u = normalizedUsername()
-        guard !u.isEmpty, !password.isEmpty else {
-            error = "Заполните поля"
-            loginFailed = true
+
+    func register(username: String, email: String, password: String) {
+        let u = username.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        let p = password.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !u.isEmpty, !p.isEmpty, !email.isEmpty else {
+            self.errorMessage = "Заполните все поля"
+            self.loginFailed = true
             return
         }
-        
-        isBusy = true
-        defer { isBusy = false }
-        
-        switch auth.register(username: u, password: password) {
-        case .success:
-            error = nil
-            loginFailed = false
-            isLoggedIn = true
-            username = u
-            password = ""
-        case .failure(let e):
-            error = e.localizedDescription
-            loginFailed = true
+        Task {
+            self.isBusy = true
+            defer { self.isBusy = false }
+            do {
+                let req = RegisterRequest(username: u, email: email, password: p)
+                _ = try await auth.register(req)
+                self.errorMessage = nil
+                self.loginFailed = false
+                self.isLoggedIn = true
+                self.username = u
+                self.password = ""
+            } catch let e as ErrorResponse {
+                self.errorMessage = e.message
+                self.loginFailed = true
+            } catch {
+                self.errorMessage = "Ошибка регистрации"
+                self.loginFailed = true
+            }
         }
-    }
-    
-    func logout(router: RootRouter) {
-        auth.logout()
-        isLoggedIn = false
-        
-        // Чистим стек навигации, чтобы нельзя было "вернуться" в приватные экраны
-        router.popToRoot(on: .designs)
-        router.popToRoot()
     }
 }

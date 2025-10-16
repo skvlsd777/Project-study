@@ -15,12 +15,3 @@ enum AuthError: Error, LocalizedError, Equatable {
         }
     }
 }
-
-protocol AuthService: AnyObject {
-    var rememberMe: Bool { get set }
-    var currentUser: AuthAccount? { get }
-    func register(username: String, password: String) -> Result<AuthAccount, AuthError>
-    func login(username: String, password: String) -> Result<AuthAccount, AuthError>
-    func logout()
-}
-
