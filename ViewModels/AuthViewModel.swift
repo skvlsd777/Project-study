@@ -9,15 +9,15 @@ final class AuthViewModel: ObservableObject {
     @Published var loginFailed = false
     @AppStorage(AppStorageKeys.isLoggedIn) var isLoggedIn = false
     @AppStorage(AppStorageKeys.rememberMe) var rememberMe = true
-
+    
     private let auth: AuthService
     var authService: AuthService { auth }
     var canSubmit: Bool { !username.isEmpty && !password.isEmpty && !isBusy }
-
+    
     init(auth: AuthService) { self.auth = auth }
-
+    
     func setRemember(_ value: Bool) { rememberMe = value }
-
+    
     func login() {
         let u = username.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         guard !u.isEmpty, !password.isEmpty else {
@@ -45,7 +45,7 @@ final class AuthViewModel: ObservableObject {
             }
         }
     }
-
+    
     func register(username: String, email: String, password: String) {
         let u = username.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         let p = password.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -73,5 +73,19 @@ final class AuthViewModel: ObservableObject {
                 self.loginFailed = true
             }
         }
+    }
+    
+    func logout(router: RootRouter) {
+        auth.logout()                 // очистит токены через AuthService
+        isLoggedIn = false
+        username = ""
+        password = ""
+        loginFailed = false
+        errorMessage = nil
+        
+        // Если у твоего роутера есть эти методы — оставь,
+        // если нет — оставь только popToRoot()
+        // router.popToRoot(on: .designs)
+        router.popToRoot()
     }
 }
