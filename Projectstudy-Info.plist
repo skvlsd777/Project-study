@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Privacy - Photo Library Additions Usage Description (NSPhotoLibraryAddUsageDescription)</key>
+	<string>Нужно для сохранения обоев циферблата в «Фото».
+</string>
+	<key>Privacy - Photo Library Usage Description (NSPhotoLibraryUsageDescription)</key>
+	<string>Нужен доступ к Фото для выбора и сохранения изображений.</string>
+</dict>
+</plist>

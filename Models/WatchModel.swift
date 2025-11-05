@@ -1,5 +1,6 @@
 import SwiftUI
 
+// MARK: - Модель устройства
 struct WatchModel: Identifiable, Hashable {
     let id = UUID()
     let name: String                 // что видит пользователь
@@ -21,6 +22,7 @@ struct WatchModel: Identifiable, Hashable {
     }
 }
 
+// MARK: - Визуальные нюансы + ПУБЛИЧНЫЙ API (all, model(for:))
 extension WatchModel {
     /// Крошечный inset для капризных корпусов (0…0.01 = 0…1%)
     var safetyInsetPercent: CGFloat {
@@ -31,9 +33,50 @@ extension WatchModel {
         default:                  return 0.0     // остальные — без поджима
         }
     }
+
+    /// Все поддерживаемые модели (мост к WatchCatalog)
+    static let all: [WatchModel] = [
+        WatchCatalog.series_41,
+        WatchCatalog.series_45,
+        WatchCatalog.ultra,
+        WatchCatalog.ultra2
+    ]
+
+    /// Нормализуем строку из настроек и возвращаем подходящую модель
+    static func model(for selected: String) -> WatchModel {
+        let s = selected.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+
+        // По ключевым словам / размерам
+        if s.contains("ultra 3") || s.contains("ultra2") { return WatchCatalog.ultra2 }
+        if s.contains("ultra 2")                          { return WatchCatalog.ultra2 }
+        if s.contains("ultra")                            { return WatchCatalog.ultra }
+
+        if s.contains("49")                               { return WatchCatalog.ultra2 }
+        if s.contains("45") || s.contains("44")           { return WatchCatalog.series_45 }
+        if s.contains("41")                               { return WatchCatalog.series_41 }
+
+        if s.contains("series 10") { return WatchCatalog.series_45 }
+        if s.contains("series 9")  { return WatchCatalog.series_45 }
+        if s.contains("series 8")  { return WatchCatalog.series_45 }
+        if s.contains("series 7")  { return WatchCatalog.series_45 }
+        if s.contains("series 6")  { return WatchCatalog.series_45 }
+        if s.contains("series 5")  { return WatchCatalog.series_45 }
+        if s.contains("series 4")  { return WatchCatalog.series_45 }
+        if s.contains("series 3")  { return WatchCatalog.series_41 }
+        if s.contains("series 2")  { return WatchCatalog.series_41 }
+        if s.contains("series 1")  { return WatchCatalog.series_41 }
+        if s.contains("1st")       { return WatchCatalog.series_41 }
+
+        // дефолт
+        return WatchCatalog.series_45
+    }
+
+    /// Удобный псевдоним — если нравится писать .from(...)
+    static func from(_ name: String) -> WatchModel { model(for: name) }
 }
 
-enum WatchCatalog {
+// MARK: - Хранилище констант (оставляем твои данные как есть)
+private enum WatchCatalog {
     static let series_41 = WatchModel(
         name: "Apple Watch 41 мм",
         overlayImageName: "Applewatch41",
@@ -69,26 +112,5 @@ enum WatchCatalog {
         cornerRadiusRatio: 0.095,
         exportSizePx: CGSize(width: 410, height: 502)
     )
-
-    static let all: [WatchModel] = [series_41, series_45, ultra, ultra2]
-
-    static func model(for selected: String) -> WatchModel {
-        let s = selected.lowercased()
-        if s.contains("ultra 3") { return ultra2 }
-        if s.contains("ultra 2") { return ultra2 }
-        if s.contains("ultra")   { return ultra }
-        if s.contains("series 10") { return series_45 }
-        if s.contains("series 9")  { return series_45 }
-        if s.contains("series 8")  { return series_45 }
-        if s.contains("series 7")  { return series_45 }
-        if s.contains("series 6")  { return series_45 }
-        if s.contains("series 5")  { return series_45 }
-        if s.contains("series 4")  { return series_45 }
-        if s.contains("series 3")  { return series_41 }
-        if s.contains("series 2")  { return series_41 }
-        if s.contains("series 1")  { return series_41 }
-        if s.contains("1st")       { return series_41 }
-        return series_45
-    }
 }
 

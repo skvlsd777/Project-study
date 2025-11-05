@@ -15,6 +15,10 @@ struct DesignsTabContainer: View {
                     
                 case .customization:
                     CustomView()
+                    
+                case .category(let cat):
+                    DesignsCategoryView(category: cat)
+                        .environmentObject(themeVM)
 
                 case .wallpaperDetail(let w):
                     ScrollView {

@@ -5,7 +5,8 @@ struct CustomView: View {
     @State private var isImagePickerPresented = false
     @EnvironmentObject var themeViewModel: ThemeViewModel
 
-    @AppStorage("selectedDevice") private var selectedDeviceName: String = "Apple Watch Series 8"
+    @AppStorage("selectedDevice") private var selectedDeviceName = "Apple Watch Series 8"
+    private var currentModel: WatchModel { WatchModel.model(for: selectedDeviceName) }
 
     var body: some View {
         ScrollView {
@@ -14,8 +15,7 @@ struct CustomView: View {
                     .font(.largeTitle).bold()
                     .foregroundColor(themeViewModel.currentTheme == .dark ? .white : .black)
 
-                // Текущая модель берётся из настроек
-                let model = WatchCatalog.model(for: selectedDeviceName)
+                let model = currentModel
 
                 WatchPreview(model: model,
                              userImage: viewModel.customizationData.userSelectedImage,

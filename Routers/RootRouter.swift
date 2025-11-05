@@ -12,7 +12,8 @@ enum Route: Hashable {
     case settingsRoot
     case profileRoot
     case profileEdit
-    case customization   
+    case customization
+    case category(DesignsCategoryView.Category) 
 }
 
 // MARK: - Root Router
