@@ -34,7 +34,7 @@ struct DesignsListView: View {
             return .category(.minimalism)
         } else if key == "классика" {
             return .category(.classic)
-        } else if key == "мировые бренды" || key == "бренды" {
+        } else if key == "мировые v" || key == "бренды" {
             return .category(.brands)
         } else {
             return .designDetail(design)

@@ -68,9 +68,5 @@ struct DesignsCategoryView: View {
         }
     }
 
-    private func composition(from design: Design) -> Composition {
-        // если позже добавишь URL: String? → вернём .url(URL)
-        Composition(background: .asset(design.imageName), numerals: nil, hands: .classic)
-    }
 }
 
