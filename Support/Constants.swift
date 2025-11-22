@@ -2,9 +2,10 @@ import Foundation
 
 enum CDN {
     static let base = URL(string: "https://skvlsd777.github.io/watch-assets/")!
+
     static func url(for relativePath: String) -> URL {
         let clean = relativePath.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
-        return base.appendingPathComponent(clean)
+        return URL(string: clean, relativeTo: base)!.absoluteURL
     }
 }
 
