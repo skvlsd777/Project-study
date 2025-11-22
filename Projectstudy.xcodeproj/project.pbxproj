@@ -72,6 +72,8 @@
 		9CC0B98C2EC2FF080047E667 /* DesignsRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC0B98B2EC2FEFF0047E667 /* DesignsRepo.swift */; };
 		9CC0B98E2EC2FF370047E667 /* CategoryFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC0B98D2EC2FF340047E667 /* CategoryFeedViewModel.swift */; };
 		9CC0B9902EC31F250047E667 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC0B98F2EC31F210047E667 /* Constants.swift */; };
+		9CC0B9922EC482A30047E667 /* DesignsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC0B9912EC482940047E667 /* DesignsCategory.swift */; };
+		9CC0B9942ED07F3D0047E667 /* Composition+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC0B9932ED07F3B0047E667 /* Composition+Factory.swift */; };
 		9CDC1A782EB2213900D1CE0B /* WatchCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDC1A772EB2213500D1CE0B /* WatchCanvasView.swift */; };
 		9CDC1A7C2EB223A900D1CE0B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9CDC1A7B2EB223A900D1CE0B /* Kingfisher */; };
 		9CDC1A7F2EB2245A00D1CE0B /* ExportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDC1A7E2EB2245700D1CE0B /* ExportService.swift */; };
@@ -142,6 +144,8 @@
 		9CC0B98B2EC2FEFF0047E667 /* DesignsRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignsRepo.swift; sourceTree = "<group>"; };
 		9CC0B98D2EC2FF340047E667 /* CategoryFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFeedViewModel.swift; sourceTree = "<group>"; };
 		9CC0B98F2EC31F210047E667 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9CC0B9912EC482940047E667 /* DesignsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignsCategory.swift; sourceTree = "<group>"; };
+		9CC0B9932ED07F3B0047E667 /* Composition+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Composition+Factory.swift"; sourceTree = "<group>"; };
 		9CDC1A772EB2213500D1CE0B /* WatchCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchCanvasView.swift; sourceTree = "<group>"; };
 		9CDC1A7E2EB2245700D1CE0B /* ExportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportService.swift; sourceTree = "<group>"; };
 		9CDC1A802EB2249500D1CE0B /* ExportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportViewModel.swift; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 		9C8FE04F2E9D1A9F001EF9F7 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				9CC0B9932ED07F3B0047E667 /* Composition+Factory.swift */,
 				9CC0B98F2EC31F210047E667 /* Constants.swift */,
 				9C8FE0522E9D1AF2001EF9F7 /* AuthViewModel+Preview.swift */,
 				9C8FE0502E9D1ACA001EF9F7 /* PreviewDI.swift */,
@@ -315,6 +320,7 @@
 		9CBDA8BE2E6AF4AB00DB4A1E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9CC0B9912EC482940047E667 /* DesignsCategory.swift */,
 				9CC0B9882EC2FE520047E667 /* RemoteDesignItem.swift */,
 				9CBDA8B72E6AF4AB00DB4A1E /* AdviceItem.swift */,
 				9CBDA8B82E6AF4AB00DB4A1E /* CustomizationData.swift */,
@@ -434,7 +440,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 2600;
+				LastUpgradeCheck = 2610;
 				TargetAttributes = {
 					F216FA6E2D8DAF8200BDF960 = {
 						CreatedOnToolsVersion = 14.2;
@@ -480,6 +486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CBDA8DD2E6AF8E300DB4A1E /* CustomView.swift in Sources */,
+				9CC0B9942ED07F3D0047E667 /* Composition+Factory.swift in Sources */,
 				9CBDA8DF2E6AF8F100DB4A1E /* DesignsListView.swift in Sources */,
 				9CBDA8E42E6AF91000DB4A1E /* ProfileEditView.swift in Sources */,
 				9CB4FF182E7D1FDE00CB18CB /* DesignsTabContainer.swift in Sources */,
@@ -536,6 +543,7 @@
 				9CBDA8EE2E6AF93500DB4A1E /* CustomizationData.swift in Sources */,
 				9CB4FEF42E79CA3100CB18CB /* RootRouter.swift in Sources */,
 				9CA7716D2E90E07A00D116AC /* WatchPreview.swift in Sources */,
+				9CC0B9922EC482A30047E667 /* DesignsCategory.swift in Sources */,
 				9C8FE04E2E99670E001EF9F7 /* AppContainer.swift in Sources */,
 				9C8FE03E2E99622B001EF9F7 /* ProfileDTO.swift in Sources */,
 				9CB4FF122E7C5B9500CB18CB /* AccountProfile.swift in Sources */,
@@ -553,6 +561,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -616,6 +625,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

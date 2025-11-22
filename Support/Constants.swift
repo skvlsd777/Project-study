@@ -2,14 +2,13 @@ import Foundation
 
 enum CDN {
     static let base = URL(string: "https://skvlsd777.github.io/watch-assets/")!
-
     static func url(for relativePath: String) -> URL {
         let clean = relativePath.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
         return base.appendingPathComponent(clean)
     }
 }
 
-private func composition(from design: Design) -> Composition {
+func composition(from design: Design) -> Composition {
     let bg: Background
     if design.imageName.contains("/") {
         bg = .url(CDN.url(for: design.imageName))      // "minimalizm/thumbs/m1.jpg"

@@ -6,6 +6,7 @@ enum AppTab: Hashable { case designs, advice, settings, profile }
 // MARK: - Routes
 // Держим тут же, в этом файле (верхний уровень)
 enum Route: Hashable {
+    case designsCategory(DesignsCategory)
     case designDetail(Design)
     case wallpaperDetail(Wallpaper)
     case adviceDetail(AdviceItem)
@@ -13,7 +14,6 @@ enum Route: Hashable {
     case profileRoot
     case profileEdit
     case customization
-    case category(DesignsCategoryView.Category) 
 }
 
 // MARK: - Root Router

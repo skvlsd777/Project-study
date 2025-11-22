@@ -16,7 +16,7 @@ struct DesignsTabContainer: View {
                 case .customization:
                     CustomView()
                     
-                case .category(let cat):
+                case .designsCategory(let cat):
                     DesignsCategoryView(category: cat)
                         .environmentObject(themeVM)
 

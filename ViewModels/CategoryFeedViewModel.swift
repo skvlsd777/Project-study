@@ -8,7 +8,7 @@ final class CategoryFeedViewModel: ObservableObject {
 
     private let repo = DesignsRepo()
 
-    func load(for category: DesignsCategoryView.Category) async {
+    func load(for category: DesignsCategory) async {
         guard !isLoading else { return }
         isLoading = true
         defer { isLoading = false }
@@ -17,7 +17,7 @@ final class CategoryFeedViewModel: ObservableObject {
             items = try await repo.load(slug: category.slug)
             errorMessage = nil
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = (error as? URLError)?.localizedDescription ?? error.localizedDescription
         }
     }
 }

@@ -24,18 +24,17 @@ struct DesignsListView: View {
         .navigationTitle("Стили дизайна")
     }
 
-    // Куда вести при тапе по карточке
     private func route(for design: Design) -> Route {
         let key = normalize(design.name)
 
         if key == "кастом" {
             return .customization
-        } else if key == "минимализм" {
-            return .category(.minimalism)
-        } else if key == "классика" {
-            return .category(.classic)
-        } else if key == "мировые v" || key == "бренды" {
-            return .category(.brands)
+        } else if key.contains("миним") || key.contains("min") {
+            return .designsCategory(.minimalism)
+        } else if key.contains("класс") || key.contains("classic") {
+            return .designsCategory(.classic)
+        } else if key.contains("мировые бренды") || key.contains("бренды") || key.contains("brand") {
+            return .designsCategory(.brands)
         } else {
             return .designDetail(design)
         }

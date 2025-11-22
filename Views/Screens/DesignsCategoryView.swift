@@ -1,13 +1,7 @@
 import SwiftUI
 
 struct DesignsCategoryView: View {
-    enum Category: String, CaseIterable {
-        case minimalism = "Минимализм"
-        case classic    = "Классика"
-        case brands     = "Мировые бренды"
-    }
-
-    let category: Category
+    let category: DesignsCategory                
 
     @StateObject private var designVM  = DesignViewModel()
     @StateObject private var exportVM  = ExportViewModel()
@@ -18,7 +12,7 @@ struct DesignsCategoryView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                ForEach(filteredDesigns, id: \.id) { design in   // ⬅️ явный id
+                ForEach(filteredDesigns, id: \.id) { design in
                     VStack(spacing: 8) {
                         WatchPreview(model: currentModel) {
                             WatchCanvasView(
@@ -29,9 +23,7 @@ struct DesignsCategoryView: View {
                         .frame(height: 200)
 
                         HStack {
-                            Text(design.name)                // ⬅️ у тебя поле name
-                                .font(.subheadline)
-                                .lineLimit(1)
+                            Text(design.name).font(.subheadline).lineLimit(1)
                             Spacer()
                             Button {
                                 Task { await exportVM.save(design: design, for: currentModel) }
@@ -43,30 +35,25 @@ struct DesignsCategoryView: View {
             }
             .padding()
         }
-        .navigationTitle(category.rawValue)
+        .navigationTitle(category.title) // см. расширение ниже
         .alert(exportVM.alertTitle, isPresented: $exportVM.showAlert) {
             Button("OK", role: .cancel) { }
         } message: { Text(exportVM.alertMessage ?? "") }
     }
 
-    // MARK: - Данные для экрана категории
     private var filteredDesigns: [Design] {
-        let all = Array(designVM.designs)              // ⬅️ приводим к [Design], чтобы не ловить Predicate<Design>
+        let all = Array(designVM.designs)
         return all.filter { belongs($0, to: category) }
     }
 
-    /// Временная эвристика: определяем категорию по имени дизайна
-    private func belongs(_ d: Design, to cat: Category) -> Bool {
+    private func belongs(_ d: Design, to cat: DesignsCategory) -> Bool {
         let key = d.name.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         switch cat {
-        case .minimalism:
-            return key.contains("min") || key.contains("миним")
-        case .classic:
-            return key.contains("classic") || key.contains("класс")
-        case .brands:
-            return key.contains("brand") || key.contains("бренд")
+        case .minimalism: return key.contains("миним") || key.contains("min")
+        case .classic:    return key.contains("класс") || key.contains("classic")
+        case .brands:     return key.contains("бренд") || key.contains("brand") || key.contains("мировые")
         }
     }
-
 }
+
 
