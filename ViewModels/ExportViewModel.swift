@@ -7,18 +7,19 @@ final class ExportViewModel: ObservableObject {
 
     init() {}
 
-    // Локальные дизайны (оставь, если нужно)
-    func composition(from design: Design) -> Composition {
-        Composition(background: .asset(design.imageName),
-                    numerals: nil,
-                    hands: .classic)
-    }
+    // MARK: - Локальные дизайны (экран с ассетами / старый список)
 
     @MainActor
     func save(design: Design, for model: WatchModel) async {
+        // Используем фабрику, которая сама решает: asset / относительный путь / полный URL
+        let composition = Composition.from(design: design)
+
         let exporter = ExportService()
-        let canvas = WatchCanvasView(composition: composition(from: design),
-                                     animated: false)
+        let canvas = WatchCanvasView(
+            composition: composition,
+            animated: false
+        )
+
         do {
             try await exporter.saveToPhotos(view: canvas, pixelSize: model.exportSizePx)
             alertTitle = "Готово"
@@ -33,17 +34,21 @@ final class ExportViewModel: ObservableObject {
         showAlert = true
     }
 
-    // 🔹 Сохранение удалённого дизайна из GitHub Pages
+    // MARK: - Удалённые дизайны с GitHub Pages (m1, m2 и т.п.)
+
     @MainActor
     func save(remote item: RemoteDesignItem, for model: WatchModel) async {
-        // Берём full-картинку из CDN (полноразмерную)
         let comp = Composition(
             background: .url(CDN.url(for: item.full)),
             numerals: nil,
             hands: .classic
         )
+
         let exporter = ExportService()
-        let canvas = WatchCanvasView(composition: comp, animated: false)
+        let canvas = WatchCanvasView(
+            composition: comp,
+            animated: false
+        )
 
         do {
             try await exporter.saveToPhotos(view: canvas, pixelSize: model.exportSizePx)
@@ -59,5 +64,4 @@ final class ExportViewModel: ObservableObject {
         showAlert = true
     }
 }
-
 
